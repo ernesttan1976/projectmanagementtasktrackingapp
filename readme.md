@@ -1,4 +1,4 @@
-#Project Management - Task Tracking App
+# Project Management - Task Tracking App
 
 ## User stories
 Note: For simplicity sake, all roles will be considered fullly authorized.
@@ -27,10 +27,10 @@ Note: For simplicity sake, all roles will be considered fullly authorized.
 ![Trello](Trello.png)
 
 ## Data Models (User + 1 Main + 1 Related)
-Boards
-Lists
-Cards
-Members
-Labels
+- Boards
+- Lists
+- Cards
+- Members
+- Labels
 
 
