@@ -23,8 +23,45 @@ Note: For simplicity sake, all roles will be considered fullly authorized.
 
 10.As a project manager, I want to be able to __view the overall progress__ of the project on the Trello Kanban board so that I can identify areas that may require additional resources or attention.
 
-## Wireframe with URLs
+## Wireframe
 ![Trello](Trello.png)
+
+## RESTful Routes
+### BOARD ###
+NEW: GET /boards/new
+CREATE: POST /boards
+READ ALL: GET /boards
+READ ONE: GET /boards/:b
+UPDATE ONE: PUT /boards/:b
+DELETE: DELETE /boards/:b
+
+### LIST ###
+NEW: GET /boards/:b/lists/new
+CREATE: POST /boards/:b/lists
+READ ALL: GET /boards/:b/lists
+UPDATE ONE: PUT /board/:b/lists/:l
+DELETE: DELETE /board/:b/lists/:l
+
+### CARD ###
+NEW: GET /boards/:b/cards/new
+CREATE: POST /boards/:b/cards
+READ ALL: GET /boards/:b/cards
+UPDATE ONE: PUT /board/:b/cards/:c
+DELETE: DELETE /board/:b/cards/:c
+
+### MEMBERS ###
+NEW: GET /users/new
+CREATE: POST /users
+READ ONE: GET /users
+UPDATE ONE: PUT /users/:u
+DELETE: DELETE /users/:u
+
+### LABEL ###
+NEW: GET /boards/:b/labels/new
+CREATE: POST /boards/:b/labels
+READ ALL: GET /boards/:b/labels
+UPDATE ONE: PUT /board/:b/labels/:c
+DELETE: DELETE /board/:b/labels/:c
 
 ## Data Models (User + 1 Main + 1 Related)
 - Boards
