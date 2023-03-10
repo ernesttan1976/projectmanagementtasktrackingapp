@@ -1,0 +1,119 @@
+<%- include('../partials/header') %>
+
+  <section id="show-page">
+    <div>Airline: </div>
+    <div>
+      <%= flight.airline %>
+    </div>
+    <div>Airport: </div>
+    <div>
+      <%= flight.airport %>
+    </div>
+    <div>Flight No:</div>
+    <div>
+      <%= flight.flightNo %>
+    </div>
+    <div>Departs:</div>
+    <div>
+      <%= flight.departs %>
+    </div>
+  </section>
+
+  <table id="destinations">
+    <tr>
+      <th>Airport</th>
+      <th>Arrival</th>
+    </tr>
+    <tbody>
+      <% if (!flight.destinations || flight.destinations.length===0) {%>
+        <tr>
+          <td colspan=2>NO DESTINATION</td>
+        </tr>
+        <% } else { %>
+          <% flight.destinations.forEach(d=>{%>
+            <tr>
+              <td>
+                <%=d.airport%>
+              </td>
+              <td>
+                <%=d.arrival%>
+              </td>
+              <td>
+                <form action="/flights/<%=flight._id%>/destinations/<%=d._id%>/?_method=DELETE" method="POST">
+                  <button type="submit" class="icon">
+                    <image src="../images/trash.png" width="15px" height="15px"></image>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+              <% } %>
+                <tr>
+                  <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+                    <td>
+                      <select id="airport" name="airport" width="50px">
+                        <%
+                          airports=['SIN','PVG','ICN','HKG','NRT','PEK','HND','BKK','DEL','CAN','BOM','MNL','CGK','KUL','KIX']%>
+                          <% airports.forEach(a=>{ %>
+                            <option value="<%=a%>">
+                              <%=a%>
+                            </option>
+                            <% }) %>
+                      </select>
+                    </td>
+                    <td>
+                      <input id="arrival" type="datetime-local" name="arrival" width="600px">
+                    </td>
+                    <td>
+                      <input type="submit" value="Add">
+                    </td>
+                  </form>
+                </tr>
+
+    </tbody>
+  </table>
+
+  <table id="tickets">
+    <thead>
+      <th>Seat</th>
+      <th>Price</th>
+      <th colspan="2">Action</th>
+    </thead>
+    <tbody>
+      <% tickets.forEach((t,index)=>{ %>
+      <tr>
+        <form action="/tickets/<%=t._id%>/flights/<%=flight._id%>/?_method=PUT" method="POST">
+        <td><input type="text" name="seat" id="seat<%=index%>" required pattern="[A-F][1-9]\d?" title="Must be A1 thru F99" value="<%=t.seat%>" readonly></td>
+        <td><input type="number" name="price" id="price<%=index%>" required min=0 step=".01" title="Must be more than 0" value="<%=t.price%>" readonly></td>
+        <td><image id="button<%=index%>" class="icon" src="../images/edit.png" width="15px" height="15px" onclick="document.getElementById('seat<%=index%>').toggleAttribute('readonly'); document.getElementById('price<%=index%>').toggleAttribute('readonly')"/>
+          <button type="submit" class="icon"><image src="../images/save.png" width="15px" height="15px" /></button></td>  
+        </form>
+          <td>
+            <form action="/tickets/<%=t._id%>/flights/<%=flight._id%>/?_method=DELETE" method="POST">
+            <button type="submit" class="icon"><image src="../images/trash.png" width="15px" height="15px"/></button>
+            </form>
+        </td>
+      </tr>
+      
+      <% })%>
+      <tr>
+        <form id="new-form" action="/tickets/<%=flight._id%>" method="POST">
+          <td>
+            <label>Seat:</label>
+            <input type="text" name="seat" id="seat" required pattern="[A-F][1-9]\d?" title="Must be A1 thru F99">  
+          </td>
+          <td>
+            <label>Price:</label>
+            <input type="number" name="price" id="price" required min=0 step=".01" title="Must be more than 0">  
+          </td>
+          <td>
+            <button type="submit">Book</button>
+          </td>
+        </form>  
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <%- include('../partials/footer') %>

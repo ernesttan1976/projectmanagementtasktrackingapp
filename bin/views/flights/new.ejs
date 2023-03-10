@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+  <form id="new-form" action="/flights" method="POST">
+    <label>Airline:</label>
+    <select name="airline">
+      <% airlineEnum=['Scoot','Tiger Airways','Silkair','Cathay Pacific','Quantas']; %>
+        <option value="Singapore AirLines">Singapore AirLines</option>
+        <% airlineEnum.forEach(a=>{ %>
+          <option value="<%=a%>">
+            <%=a%>
+          </option>
+          <% }) %>
+    </select>
+    <label>Airport:</label>
+    <select name="airport">
+      <% airportEnum=['PVG','ICN','HKG','NRT','PEK','HND','BKK','DEL','CAN','BOM','MNL','CGK','KUL','KIX']; %>
+        <option value="SIN" selected>SIN</option>
+        <% airportEnum.forEach(ap=>{ %>
+          <option value="<%=ap%>">
+            <%=ap%>
+          </option>
+          <% }) %>
+    </select>
+    <label>Flight No.:</label>
+    <input type="number" min=10 max=9999 name="flightNo">
+    <label>Departs:</label>
+    <% const min={days: 1, months: 0,years: 0} %>
+      <% const max={days: 0, months: 6,years: 0} %>
+        <% const minDate=new Date(new Date().getTime() + min.years * 365 * 24 * 60 * 60 * 1000 + min.months * 30 * 24 *
+          60 * 60 * 1000 + min.days * 24 * 60 * 60 * 1000) %>
+          <% const maxDate=new Date(new Date().getTime() + max.years * 365 * 24 * 60 * 60 * 1000 + max.months * 30 * 24
+            * 60 * 60 * 1000 + max.days * 24 * 60 * 60 * 1000) %>
+            <input type="datetime-local" name="departs" min="<%=minDate%>" max="<%=maxDate%>">
+            <input type="submit" value="Add Flight">
+  </form>
+
+  <%- include('../partials/footer') %>
