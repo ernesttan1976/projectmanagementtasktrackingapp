@@ -1,151 +1,102 @@
 * {
   box-sizing: border-box;
   font-family: Helvetica;
-
 }
 
-body {
-  margin: 0;
-  height: 100vh;
+.board{
+  width: 80vw;
+  height: 60vh;
+  background-color: rgb(0, 0, 71);
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px rgb(40, 40, 40);
   display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-areas:
-    "nav"
-    "main";
-  color: #424748;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  grid-gap: 20px;
 }
 
-body>nav {
-  grid-area: nav;
-  background-color: #B8C0C2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 20px 0 30px;
+.board>.board-title{
+  grid-area: 1 / 1 / 2 / 5;
 }
 
-nav>img {
-  width: 34px;
-  object-fit: contain;
-  margin-right: auto;
+.board>.board-container{
+  grid-area: 2 / 1 / 3 / 5 ; 
 }
 
-body>main {
-  grid-area: main;
+.board>.add-list-button{
+  grid-area: 3 / 4 / 4 / 5 ; 
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 15px 200px 15px;
+  grid-template-rows: 15px 30px 1fr 50px 15px;
+}
+
+.list>.list-title{
+  grid-area: 1 / 2 / 3 / 3;
+}
+
+.list>.list-container {
+  grid-area: 3 / 2 / 4 / 3;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  background-color: #E8ECEB;
-  padding: 20px;
-  overflow-y: scroll;
 }
 
-body>main h1:first-child {
-  margin-bottom: 50px;
+.list>.add-card-button{
+  grid-area: 4 / 2 / 5 / 3;
 }
 
-nav>a {
-  margin: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
+.list>.edit-button{
+  grid-area: 1 / 3 / 2 / 4;
 }
 
-nav>a:hover:not(.active) {
-  color: white;
-  background-color: #424748;
+.list>.delete-button{
+  grid-area: 5 / 1 / 6 / 2;
 }
 
-nav>a.active {
-  color: white;
-  cursor: default;
-}
-
-#new-form {
+.card {
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, minmax(auto, 22rem));
+  grid-template-columns: 15px 60px 60px 60px 15px;
+  grid-template-rows: 15px 40px 40px 15px;
 }
 
-#new-form *,
-#add-review-form * {
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 5px;
+.card>.title{
+  grid-area: 2 / 2 / 3 / 4;
 }
 
-#new-form input[type="submit"] {
-  grid-column: span 2;
-  width: 10rem;
-  margin-left: auto;
+.card>.due-date{
+  grid-area: 2 / 4 / 3 / 5;
 }
 
-table {
-  font-size: 20px;
+.card>.edit-button{
+  grid-area: 1 / 5 / 2 / 6;
 }
 
-#destinations {
-  margin-top: 30px;
-  font-size: 1rem;
+.card>.delete-button{
+  grid-area: 4 / 1 / 5 / 2;
 }
 
-table thead th {
-  padding: 5px;
-  border-bottom: 2px solid #424748;
+.card>.users{
+  grid-area: 3 / 3/ 4 / 5;
 }
 
-table td {
-  padding: 10px;
-  text-align: center;
+#list1{
+  grid-area: 2 / 1 / 3 / 2;
 }
 
-#list td:nth-child(2),
-#list td:nth-child(3) {
-  min-width: 100px;
+#list2{
+  grid-area: 2 / 2 / 3 / 3;
 }
 
-#list a {
-  border-radius: 4px;
-  background-color: #B8C0C2;
-  padding: 4px;
-  text-decoration: none;
-  font-size: 14px;
+#list3{
+  grid-area: 2 / 3 / 3 / 4;
 }
 
-#list a:hover {
-  background-color: white;
-}
-
-#show-page {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-}
-
-#show-page div:nth-child(even) {
-  font-weight: bold;
-}
-
-#add-review-form {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 1rem;
-}
-
-#add-review-form input[type="submit"] {
-  width: 8rem;
-  grid-column: 2 / 3;
-  margin-bottom: 2rem;
-}
-
-#airport{
-  font-size: 0.9rem;
-  padding: 5px;
-}
-
-#arrival{
-  font-size: 0.9rem;
-  padding: 4px 120px;
+#list4{
+  grid-area: 2 / 4 / 3 / 5;
 }
 
 input:invalid {
