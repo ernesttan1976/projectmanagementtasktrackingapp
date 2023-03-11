@@ -1,0 +1,12 @@
+<form class="form" id="select-board" action="/boards/select" method=GET">
+  <div class="form-title"><%= title %></div>
+  <label for="">Board Title</label>
+  <select name="boardId" title="Select board">
+  <% boards.forEach((b,index)=>{ %>
+    <option value="<%=b._id%>" <%=(index===0) ? 'selected':''%>>
+      <%=b.title%>
+    </option>
+  <% }) %>
+  </select>
+  <button type="submit">Ok</button>
+</form>

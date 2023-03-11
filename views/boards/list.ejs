@@ -1,0 +1,23 @@
+<div class="list" id="list<%=listIndex%>">
+    <div class="list-title"><%=list.title%></div>
+    <div class="list-container">
+      <% list.cards.forEach(card=>{ %>
+        <%- include('./card', {listId: list._id, listIndex, card}) %>        
+      <% }) %>
+    </div>
+    <form action="/boards/<%=board._id%>/lists/<%=list._id%>/cards/new" method="GET" class="add-card-button">
+      <button type="submit">
+        <image src="/images/plus.png" class="icon-large"></image>
+      </button>
+    </form>
+    <form action="/boards/<%=board._id%>/lists/<%=list._id%>/edit" method="GET" class="edit-list-button">
+      <button type="submit">
+        <image src="/images/edit.png" class="icon-medium"></image>
+      </button>
+    </form>
+    <form action="/boards/<%=board._id%>/lists/<%=list._id%>/?_method=DELETE" method="POST" class="delete-list-button">
+      <button type="submit">
+        <image src="/images/trash.png" class="icon-medium"></image>
+      </button>
+    </form>
+  </div>

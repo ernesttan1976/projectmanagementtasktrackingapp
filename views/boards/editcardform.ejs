@@ -1,0 +1,53 @@
+<div class="form">
+<form class="form" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=card._id%>/?_method=PUT" method="POST">
+<div class="form-title">Edit Card</div>
+<label for="">Card Title</label>
+<input type="text" name="title" id="form-title" value="<%=card.title%>" required
+title="Task description is required" />
+<label for="">Card Due Date</label>
+<input type="date" name="dueDate" id="form-dueDate" value="<%=card.dueDate%>" title="Date must be in the
+future">
+<button type="submit">Ok</button>
+</form>
+<table id="label-table">
+<thead>
+<tr>
+<th>Labels</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<% if (card.labels.length===0) { %>
+<tr>
+<td colspan=2>
+    <%='NO LABELS'%>
+</td>
+</tr>
+<% } else { %>
+<% card.labels.forEach(label=>{%>
+    <tr>
+        <td class="labels">
+            <%=label.title%>
+        </td>
+        <td>
+            <form
+                action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/labels/<%=label._id%>/?_method=DELETE"
+                class="delete-card-button" method="POST">
+                <button type="submit">
+                    <image src="/images/trash.png" class="icon"></image>
+                </button>
+            </form>
+        </td>
+    </tr>
+    <% })} %>
+</tbody>
+</table>
+<form class="form" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/labels" method="POST"
+    class="add-label-button">
+            <label for="">New Label</label>
+            <input type="text" name="labelTitle" id="labelTitle">
+            <button type="submit">
+                <image src="/images/plus.png" class="icon-large"></image>
+            </button>
+</form>
+</div>

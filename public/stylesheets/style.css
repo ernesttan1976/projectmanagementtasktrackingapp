@@ -30,11 +30,17 @@ form {
   grid-template-rows: 100vh;
 }
 
+#label-table {
+  background-color: rgb(235, 235, 235);
+  color: black;
+  font-size: 0.8rem;
+  margin-left: 20px;
+}
+
 .form {
   width: 100%;
-  height: 100%;
   grid-area: 1 / 1 / 2 / 2;
-  background-color: rgb(196, 196, 196);
+  background-color: rgb(235, 235, 235);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -52,77 +58,74 @@ form {
   color: inherit;
 }
 
+label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+input,select {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: inherit;
+  padding: 3px;
+}
+
 input:invalid {
-  background: rgba(255, 0, 0, 0.5);
+  background: rgb(150, 150, 150);
   border: rgb(255, 73, 73) solid 3px;
 } 
 
 input:valid {
-  background: rgba(0, 255, 0, 0.5);
+  background: rgb(150, 150, 150);
   border: rgb(130, 255, 130) solid 3px;
 }
 
-label {
-  margin-bottom: 5px;
-  color: inherit;
-}
-
-input {
-  border-radius: 5px;
-  color: inherit;
+button{
+  background:#19bf00;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 3px 3px 6px -1px rgb(40, 40, 40);
+  padding: 5px;
+  /* margin-top: 20px; */
 }
 
 .board{
   grid-area: 1 / 2 / 2 / 3;
-  background-color: rgba(0, 0, 208, 0.325);
-  box-shadow: 0 0 8px rgb(40, 40, 40);
+  background-color: rgb(119, 0, 230);
+  color: white;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 30px 1fr;
-  color: white;
-  padding: 5px;
-  padding-bottom: 20px;
+  padding: 10px 0 20px 0;
 }
 
 .board>.board-title{
   grid-area: 1 / 1 / 2 / 2;
   font-size: 1.8rem;
   font-weight: 600;
-  color: rgb(77, 88, 98);
-  justify-self: center;
+  color: rgb(53, 61, 68);
+  justify-self: flex-start;
   align-self: center;
+  margin-left: 65px;
 }
 
 .board>.board-container{
-  grid-area: 2 / 1 / 3 / 3 ; 
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  overflow-x: auto;
-}
-
-#list1{
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-#list2{
-  grid-area: 1 / 2 / 2 / 3;
-}
-
-#list3{
-  grid-area: 1 / 3 / 2 / 4;
-}
-
-#list4{
-  grid-area: 1 / 4 / 2 / 5;
+  grid-area: 2 / 1 / 3 / 2 ; 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(119, 0, 230);
 }
 
 .add-list-button{
   grid-area: 1 / 1 / 2 / 2 ;
-  justify-self: flex-end;
+  justify-self: flex-start;
 }
 
 .list {
+  width: 220px;
+  height: 400px;
   display: grid;
   grid-template-columns: var(--medium-icon-size-offset) 1fr var(--medium-icon-size-offset);
   grid-template-rows: var(--medium-icon-size) 1fr 30px var(--medium-icon-size-offset);
@@ -193,7 +196,7 @@ input {
   font-size: 0.7rem;
   justify-self: stretch;
   align-self: flex-start;
-  text-align: justify;
+  text-align: center;
 }
 
 .card>.due-date{
@@ -231,10 +234,15 @@ input {
   font-weight: 600;
 }
 
-.card>.labels{
+.card .labels-container{
   grid-area: 1 / 1 / 2 / 6;
   justify-self: flex-end;
   align-self: center;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.card .labels{
   font-size: 0.6rem;
   margin-right: 5px;
   margin-left: 10px;
@@ -244,13 +252,29 @@ input {
   font-weight: 600;
 }
 
-button{
+table .labels{
+  font-size: 0.8rem;
+  padding: 5px;
+  border-radius: min(10px, 50%);
+  background-color: rgb(247, 157, 255);
+  font-weight: 600;
+}
+
+
+
+:is(button):has(*){
   display: flex;
   justify-content: center;
   align-items: center;
   border: 0;
   background: none;
+  border-radius: none;
+  box-shadow: none;
+  padding: none;
+  margin-top: none;
 }
+
+
 
 .icon{
   width: var(--small-icon-size);

@@ -1,7 +1,7 @@
 # Project Management - Task Tracking App
 
 ## User stories
-Note: For simplicity sake, all roles will be considered fullly authorized.
+Note: For simplicity sake, all roles will be considered fullly authorized. Member = User.
 
 1.As a team member, I want to __create a new task card__ in Trello Kanban board so that I can track my progress and collaborate with my team members.
 
@@ -28,46 +28,41 @@ Note: For simplicity sake, all roles will be considered fullly authorized.
 
 ## RESTful Routes
 ### BOARD ###
-- NEW: GET /boards/new
-- CREATE: POST /boards
-- READ ALL: GET /boards
-- READ ONE: GET /boards/:b
-- UPDATE ONE: PUT /boards/:b
-- DELETE: DELETE /boards/:b
+[x]- NEW: GET /boards/new
+[x]- CREATE: POST /boards
+[x]- READ ALL: GET /boards
+[x]- READ ONE: GET /boards/:b
+[ ]- UPDATE ONE: PUT /boards/:b
+[ ]- DELETE: DELETE /boards/:b
 
 ### LIST ###
-- NEW: GET /boards/:b/lists/new
-- CREATE: POST /boards/:b/lists
-- READ ALL: GET /boards/:b/lists
-- UPDATE ONE: PUT /board/:b/lists/:l
-- DELETE: DELETE /board/:b/lists/:l
+[x]- NEW: GET /boards/:b/lists/new
+[x]- CREATE: POST /boards/:b/lists
+[ ]- UPDATE ONE: PUT /board/:b/lists/:l
+[x]- DELETE: DELETE /board/:b/lists/:l
 
 ### CARD ###
-- NEW: GET /boards/:b/cards/new
-- CREATE: POST /boards/:b/cards
-- READ ALL: GET /boards/:b/cards
-- UPDATE ONE: PUT /board/:b/cards/:c
-- DELETE: DELETE /board/:b/cards/:c
+[x]- NEW: GET /boards/:b/lists/:l/cards/new
+[x]- CREATE: POST /boards/:b/lists/:l/cards
+[x]- UPDATE ONE: PUT /board/:b/lists/:l/cards/:c
+[x]- DELETE: DELETE /board/:b/lists/:l/cards/:c
 
 ### MEMBERS ###
-- NEW: GET /users/new
-- CREATE: POST /users
-- READ ONE: GET /users
-- UPDATE ONE: PUT /users/:u
-- DELETE: DELETE /users/:u
+[ ]- NEW: GET /users/new
+[ ]- CREATE: POST /users
+[ ]- READ ONE: GET /users
+[ ]- UPDATE ONE: PUT /users/:u
+[ ]- DELETE: DELETE /users/:u
 
 ### LABEL ###
-- NEW: GET /boards/:b/labels/new
-- CREATE: POST /boards/:b/labels
-- READ ALL: GET /boards/:b/labels
-- UPDATE ONE: PUT /board/:b/labels/:c
-- DELETE: DELETE /board/:b/labels/:c
+[x]- CREATE: POST /boards/:b/labels
+[x]- DELETE: DELETE /board/:b/labels/:c
 
 ## Data Models (User + 1 Main + 1 Related)
 - Boards
 - Lists
 - Cards
-- Members
+- Users
 - Labels
 
 

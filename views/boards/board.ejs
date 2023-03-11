@@ -1,0 +1,13 @@
+<div class="board">
+    <div class="board-title"><%=board.title%></div>
+    <div class="board-container">
+      <% board.lists.forEach((list, listIndex)=>{ %>
+        <%- include('./list', {list, listIndex}) %>
+      <% }) %>
+    </div>
+    <form action="/boards/<%=board._id%>/lists/new" method="GET" class="add-list-button">
+      <button>
+        <image src="/images/plus.png" class="icon-large"></image>
+      </button>
+    </form>
+  </div>

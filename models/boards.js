@@ -37,7 +37,6 @@ const listSchema = new Schema({
 const boardSchema = new Schema({
   title: {
     type: String,
-    default: "Project Plan",
     required: true,
   },
   lists: [listSchema],

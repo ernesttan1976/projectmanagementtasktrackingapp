@@ -1,0 +1,31 @@
+<div class="card" data-card-id="card01">
+  <div class="card-title"><%=card.title%></div>
+  <% const thisDate = new Date(Date.parse(card.dueDate)) %>
+  <% const year = thisDate.getFullYear() %>
+  <% const month = thisDate.getMonth()+1 %>
+  <% const day = thisDate.getDate() %>
+  <% const str = (card.dueDate)? `${day}-${month}-${year}`:'' %>
+  <div class="due-date"><%=str%></div>
+  <form action="/boards/<%=board._id%>/lists/<%=listId%>/cards/<%=card._id%>/edit" class="edit-card-button" method="GET">
+    <button type="submit">
+      <image src="/images/edit.png" class="icon"></image>
+    </button>
+  </form>
+  <form action="/boards/<%=board._id%>/lists/<%=listId%>/cards/<%=card._id%>/?_method=DELETE" class="delete-card-button" method="POST">
+    <button type="submit">
+      <image src="/images/trash.png" class="icon"></image>
+    </button>
+  </form>
+  <% if (card.users) { card.users.map(user=>{ %>
+    <div class="users">
+      <%=user.name%>
+    </div>
+  <% })} %>
+  <div class="labels-container">
+    <% if (card.labels) { card.labels.map(label=>{ %>
+      <div class="labels">
+        <%=label.title%>
+      </div>
+    <% })} %>  
+  </div>
+</div>
