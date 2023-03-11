@@ -1,6 +1,357 @@
 <%- include('../partials/header') %>
 
-<div class="board" data-id=">
-</div>
+  <div class="page">
+    <div class="form">
+      <div class="form-title">Card</div>
+      <label for="">Title</label>
+      <input type="text" name="title" id="form-title" required />
+    </div>
+    <div class="board">
+      <div class="board-title">Project Plan</div>
+      <div class="board-container">
+        <div class="list" id="list1">
+          <div class="list-title">Backlog</div>
+          <div class="list-container">
+            <div class="card" data-card-id="card01">
+              <div class="card-title">Task 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card02">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card03">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card04">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+          </div>
+          <form action="/cards/new" method="GET" class="add-card-button">
+            <button type="submit">
+              <image src="../images/plus.png" class="icon-large"></image>
+            </button>
+          </form>
+          <form action="/cards/:id/edit" method="GET" class="edit-list-button">
+            <button type="submit">
+              <image src="../images/edit.png" class="icon-medium"></image>
+            </button>
+          </form>
+          <form action="cards/:id/?_method=DELETE" method="POST" class="delete-list-button">
+            <button type="submit">
+              <image src="../images/trash.png" class="icon-medium"></image>
+            </button>
+          </form>
+        </div>
+        <div class="list" id="list2">
+          <div class="list-title">In Progress</div>
+          <div class="list-container">
+            <div class="card" data-card-id="card01">
+              <div class="card-title">Task 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card02">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card03">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card04">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+          </div>
+          <form action="/cards/new" method="GET" class="add-card-button">
+            <button type="submit">
+              <image src="../images/plus.png" class="icon-large"></image>
+            </button>
+          </form>
+          <form action="/cards/:id/edit" method="GET" class="edit-list-button">
+            <button type="submit">
+              <image src="../images/edit.png" class="icon-medium"></image>
+            </button>
+          </form>
+          <form action="cards/:id/?_method=DELETE" method="POST" class="delete-list-button">
+            <button type="submit">
+              <image src="../images/trash.png" class="icon-medium"></image>
+            </button>
+          </form>
+        </div>
+        <div class="list" id="list3">
+          <div class="list-title">Code Review</div>
+          <div class="list-container">
+            <div class="card" data-card-id="card01">
+              <div class="card-title">Task 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card02">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card03">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card04">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+          </div>
+          <form action="/cards/new" method="GET" class="add-card-button">
+            <button type="submit">
+              <image src="../images/plus.png" class="icon-large"></image>
+            </button>
+          </form>
+          <form action="/cards/:id/edit" method="GET" class="edit-list-button">
+            <button type="submit">
+              <image src="../images/edit.png" class="icon-medium"></image>
+            </button>
+          </form>
+          <form action="cards/:id/?_method=DELETE" method="POST" class="delete-list-button">
+            <button type="submit">
+              <image src="../images/trash.png" class="icon-medium"></image>
+            </button>
+          </form>
+        </div>
+        <div class="list" id="list4">
+          <div class="list-title">Completed</div>
+          <div class="list-container">
+            <div class="card" data-card-id="card01">
+              <div class="card-title">Task 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card02">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card03">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+            <div class="card" data-card-id="card04">
+              <div class="card-title">Task 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, eius!</div>
+              <div class="due-date">11/3/2023</div>
+              <form action="/cards/:id/edit" class="edit-card-button" method="GET">
+                <button type="submit">
+                  <image src="../images/edit.png" class="icon"></image>
+                </button>
+              </form>
+              <form action="cards/:id/?_method=DELETE" class="delete-card-button" method="POST">
+                <button type="submit">
+                  <image src="../images/trash.png" class="icon"></image>
+                </button>
+              </form>
+              <div class="users">Tom</div>
+              <div class="labels">UI</div>
+            </div>
+          </div>
+          <form action="/cards/new" method="GET" class="add-card-button">
+            <button type="submit">
+              <image src="../images/plus.png" class="icon-large"></image>
+            </button>
+          </form>
+          <form action="/cards/:id/edit" method="GET" class="edit-list-button">
+            <button type="submit">
+              <image src="../images/edit.png" class="icon-medium"></image>
+            </button>
+          </form>
+          <form action="cards/:id/?_method=DELETE" method="POST" class="delete-list-button">
+            <button type="submit">
+              <image src="../images/trash.png" class="icon-medium"></image>
+            </button>
+          </form>
+        </div>
+      </div>
+      <form action="/lists/new" method="GET" class="add-list-button">
+        <button>
+          <image src="../images/plus.png" class="icon-large"></image>
+        </button>
+      </form>
+    </div>
+  </div>
 
-<%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>

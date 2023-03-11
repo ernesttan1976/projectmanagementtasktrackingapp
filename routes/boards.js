@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var flightsCtrl = require('../controllers/flights');
+var boardsCtrl = require('../controllers/boards');
 
 
 //Index-Get
-router.get('/', flightsCtrl.index);
-
+router.get('/', boardsCtrl.show);
 
 module.exports = router;

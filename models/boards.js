@@ -4,12 +4,11 @@ const Schema = mongoose.Schema;
 const moment = require('moment');
 const User = require('./users');
 
-const listSchema = new Schema({
+const labelSchema = new Schema({
   title: {
     type: String,
     required: true,
-  },
-  cards: [cardSchema],
+  },  
 });
 
 const cardSchema = new Schema({
@@ -20,15 +19,19 @@ const cardSchema = new Schema({
   dueDate: {
     type: Date,
   },
-  labels: [cardSchema],
-  users: [userSchema],
+  labels: [labelSchema],
+  users: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'User',
+  },
 });
 
-const labelSchema = new Schema({
+const listSchema = new Schema({
   title: {
     type: String,
     required: true,
-  },  
+  },
+  cards: [cardSchema],
 });
 
 const boardSchema = new Schema({
