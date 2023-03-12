@@ -28,17 +28,17 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 
 ## RESTful Routes
 ### BOARD ###
-[x]- NEW: GET /boards/new
+[x]- NEW: GET /boards/new *
 [x]- CREATE: POST /boards
-[x]- READ ALL: GET /boards
-[x]- READ ONE: GET /boards/:b
-[ ]- UPDATE ONE: PUT /boards/:b
+[x]- READ ALL: GET /boards *
+[x]- READ ONE: GET /boards/:b *
+[x]- UPDATE ONE: PUT /boards/:b
 [ ]- DELETE: DELETE /boards/:b
 
 ### LIST ###
 [x]- NEW: GET /boards/:b/lists/new
 [x]- CREATE: POST /boards/:b/lists
-[ ]- UPDATE ONE: PUT /board/:b/lists/:l
+[x]- UPDATE ONE: PUT /board/:b/lists/:l
 [x]- DELETE: DELETE /board/:b/lists/:l
 
 ### CARD ###

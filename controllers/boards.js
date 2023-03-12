@@ -6,9 +6,13 @@ module.exports = {
   redirect,
   show,
   newBoard,
+  editBoard,
+  updateBoard,
   create,
   newList,
   createList,
+  editList,
+  updateList,
   deleteList,
   newCard,
   createCard,
@@ -18,6 +22,37 @@ module.exports = {
   deleteLabel,
   deleteCard
 };
+
+function editList(req, res, next){
+  const boardId = req.params.boardId;
+  const listId = req.params.listId;
+  Board.findById(boardId)
+    .then(board => {
+      const list = board.lists.id(listId);
+      const title = board.title;
+      const context = { title, boardId, listId, list, board};
+      res.render('boards/editlist', context);
+    })
+    .catch(err => {
+      res.send(next);
+    })
+}
+
+function updateList(req, res){
+  const boardId = req.params.boardId;
+  const listId = req.params.listId;
+  Board.findById(boardId)
+    .then(board => {
+      const list = board.lists.id(listId);
+      list.title = req.body.title;
+      board.save();
+      res.redirect(`/boards/${boardId}`);
+    })
+    .catch(err => {
+      res.send(next);
+    })
+}
+
 
 function deleteLabel(req, res) {
   const boardId = req.params.boardId;
@@ -207,6 +242,31 @@ function show(req, res) {
       res.render('boards/show', context);
     })
 
+}
+
+function editBoard(req,res,next){
+  const boardId = req.params.boardId;
+  Board.findById(boardId)
+    .then(board=>{
+      const context = {title: "Edit Board", board};
+      res.render('boards/editboard', context);
+    })
+    .catch(err=>{
+      res.send(next);
+    })
+}
+
+function updateBoard(req,res,next){
+  const boardId = req.params.boardId;
+  Board.findById(boardId)
+    .then(board=>{
+      board.title = req.body.title;
+      board.save();
+      res.redirect(`/boards/${boardId}`);
+    })
+    .catch(err=>{
+      res.send(next);
+    })
 }
 
 function newBoard(req, res) {

@@ -1,0 +1,6 @@
+<form class="form" id="edit-list" action="/boards/<%=boardId%>/lists/<%=listId%>/?_method=PUT" method="POST">
+  <div class="form-title">Edit List</div>
+  <label for="">List Title</label>
+  <input type="text" name="title" id="form-title" value="<%=list.title%>" required title="List name is required"/>
+  <button type="submit">Ok</button>
+</form>

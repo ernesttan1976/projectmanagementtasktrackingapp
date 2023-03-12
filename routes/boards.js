@@ -15,6 +15,12 @@ router.get('/select', boardsCtrl.redirect);
 //READ ONE: GET /boards/:b
 router.get('/:boardId', boardsCtrl.show);
 
+//EDIT ONE: GET /boards/:b/edit
+router.get('/:boardId/edit', boardsCtrl.editBoard);
+
+//UPDATE ONE: PUT /boards/:b
+router.put('/:boardId', boardsCtrl.updateBoard);
+
 //CREATE: POST /boards
 router.post('/', boardsCtrl.create);
 
@@ -48,5 +54,11 @@ router.post('/:boardId/lists/:listId/cards/:cardId/labels', boardsCtrl.createLab
 
 //DELETE: DELETE /boards/:b/lists/:l/cards/:c/labels/:l
 router.delete('/:boardId/lists/:listId/cards/:cardId/labels/:labelId', boardsCtrl.deleteLabel);
+
+//EDIT: GET /boards/:b/lists/:l/edit
+router.get('/:boardId/lists/:listId/edit', boardsCtrl.editList);
+
+//UPDATE ONE: PUT /board/:b/lists/:l
+router.put('/:boardId/lists/:listId', boardsCtrl.updateList);
 
 module.exports = router;

@@ -14,11 +14,11 @@
   font-size: 1rem;
 }
 
-form {
+/* form {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .page {
   width: 100vw;
@@ -37,9 +37,34 @@ form {
   margin-left: 20px;
 }
 
-.form {
+.form-container {
   width: 100%;
   grid-area: 1 / 1 / 2 / 2;
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.jumbotron {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.jumbotron div{
+  display: flex;
+  font-size: 3rem;
+  font-weight: 600;
+  color:rgb(255, 255, 220)
+}
+
+.form {
+  width: 100%;
   background-color: rgb(235, 235, 235);
   display: flex;
   flex-direction: column;
@@ -107,7 +132,27 @@ button{
   color: rgb(53, 61, 68);
   justify-self: flex-start;
   align-self: center;
-  margin-left: 65px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.edit-board-button *{
+  width: var(--small-icon-size);
+  height: var(--small-icon-size);
+  align-self: flex-start;
+}
+
+.edit-board-button{
+  margin-left: 5px;
+  width: var(--small-icon-size);
+  height: var(--small-icon-size);
+}
+
+
+.home-button *{
+margin-right: 10px;
 }
 
 .board>.board-container{
@@ -120,12 +165,14 @@ button{
 
 .add-list-button{
   grid-area: 1 / 1 / 2 / 2 ;
-  justify-self: flex-start;
+  justify-self: flex-end;
 }
 
 .list {
   width: 220px;
-  height: 400px;
+  height: 60vh;
+  min-width: 220px;
+  min-height: 580px;
   display: grid;
   grid-template-columns: var(--medium-icon-size-offset) 1fr var(--medium-icon-size-offset);
   grid-template-rows: var(--medium-icon-size) 1fr 30px var(--medium-icon-size-offset);
@@ -177,8 +224,11 @@ button{
 
 .card {
   display: grid;
-  width: 95%;
-  height: 24%;
+  width: 180px;
+  height: 120px;
+  min-height: 100px;
+  max-height: 300px;
+  min-width: 200px;
   grid-template-columns: var(--small-icon-size-offset) 1fr 1fr 1fr var(--small-icon-size-offset) ;
   grid-template-rows: var(--small-icon-size-offset) 1fr 1fr var(--small-icon-size-offset);
   background-color: rgb(255, 255, 220);

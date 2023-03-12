@@ -1,0 +1,6 @@
+<form class="form" id="edit-board" action="/boards/<%=board._id%>/?_method=PUT" method="POST">
+  <div class="form-title">Edit Board</div>
+  <label for="">Title</label>
+  <input type="text" name="title" id="form-title" value="<%=board.title%>" required title="Project title is required"/>
+  <button type="submit">Ok</button>
+</form>
