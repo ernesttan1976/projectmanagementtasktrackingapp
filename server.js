@@ -6,6 +6,7 @@ var logger = require('morgan');
 var moment = require('moment');
 var methodOverride = require('method-override');
 
+
 // It's very important to require dotenv before any
 // module that depends upon the environment variables
 // in the .env file
@@ -15,7 +16,7 @@ require('./config/database');
 
 var indexRouter = require('./routes/index');
 var boardsRouter = require('./routes/boards');
-
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/boards', boardsRouter);
+app.use('/users', usersRouter);
 
 
 // catch 404 and forward to error handler

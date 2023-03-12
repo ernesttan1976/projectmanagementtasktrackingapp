@@ -11,6 +11,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
     match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   },
   password: {
@@ -22,7 +23,14 @@ const userSchema = new Schema({
     match: /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\.(?:jpe?g|png|gif)$/i,
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: {
+    virtuals: true,
+    transform: (_doc, ret) => {
+      delete ret.password;
+      return ret;
+    },
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);
