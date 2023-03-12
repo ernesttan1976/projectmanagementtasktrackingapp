@@ -174,10 +174,10 @@ function deleteList(req, res) {
   const boardId = req.params.boardId;
   const listId = req.params.listId;
   Board.findById(boardId)
-    .then(board => {
-      const list = board.lists.id(listId);
-      list.remove();
-      board.save();
+    .then(async function (board){
+      const list = await board.lists.id(listId);
+      await list.remove();
+      await board.save();
       res.redirect(`/boards/${boardId}`);
     })
     .catch(err => {

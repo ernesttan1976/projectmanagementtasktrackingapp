@@ -21,8 +21,8 @@ form {
 }
 
 .page {
-  width: 100vw;
-  height: 100vh;
+  width: 150vw;
+  height: 150vh;
   display: grid;
   justify-content: stretch;
   align-items: stretch;
@@ -45,6 +45,7 @@ form {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  height: 157vh;
 }
 
 .jumbotron {
@@ -70,7 +71,7 @@ form {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: 20px;
+  padding: 5px;
   color: black;
   font-size: 0.8rem;
 }
@@ -89,19 +90,24 @@ label {
   color: inherit;
 }
 
-input,select {
+input,select,textarea {
+  min-width: 180px;
   margin-bottom: 10px;
   border-radius: 5px;
   color: inherit;
   padding: 3px;
 }
 
-input:invalid {
+textarea {
+  resize: none;
+}
+
+input:invalid,textarea:invalid {
   background: rgb(150, 150, 150);
   border: rgb(255, 73, 73) solid 3px;
 } 
 
-input:valid {
+input:valid,textarea:valid {
   background: rgb(150, 150, 150);
   border: rgb(130, 255, 130) solid 3px;
 }
@@ -123,6 +129,8 @@ button{
   grid-template-columns: 1fr;
   grid-template-rows: 30px 1fr;
   padding: 10px 0 20px 0;
+  width: auto;
+  height: auto;
 }
 
 .board>.board-title{
@@ -159,24 +167,26 @@ margin-right: 10px;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background-color: rgb(119, 0, 230);
   overflow: auto;
-  resize: both;
-  height: 500%;
+  resize: vertical;
+  width: auto;
+  height: 150vh;
 }
 
 .add-list-button{
   grid-area: 1 / 1 / 2 / 2 ;
-  justify-self: flex-end;
+  justify-self: flex-start;
+  margin-left: 300px;
 }
 
 .list {
-  width: 200px;
+  width: 180px;
   height: auto;
   min-width: 200px;
-  min-height: 250px;
-  max-height: 500px;
+  min-height: 400px;
+  max-height: 600px;
   display: grid;
   grid-template-columns: var(--medium-icon-size-offset) 1fr var(--medium-icon-size-offset);
   grid-template-rows: var(--medium-icon-size) 1fr 30px var(--medium-icon-size-offset);
