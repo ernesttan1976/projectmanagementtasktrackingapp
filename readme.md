@@ -66,3 +66,27 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 - Labels
 
 
+## To Do
+### Data and Validation
+1. Fix the date in the card edit form
+2. Validation and redirect with the validation error displayed.
+
+### Power Feature
+1. Markdown element [x]
+2. Photo upload for user[ ]
+3. File upload for board files [ ]
+4. Print page [ ] 
+5. Save as pdf [ ]
+
+### Security
+1. Session Auth [ ]
+2. Google OAuth [ ]
+
+### UI
+1. Move and resize cards and lists and save their positions [ ]
+2. Move cards within the list (sort) [ ]
+3. Move cards between 2 lists [ ]
+
+### Deployment
+8.Deploy to Render
+9.Deploy to Cyclic
