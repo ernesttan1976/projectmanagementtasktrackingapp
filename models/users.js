@@ -8,6 +8,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  googleId: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
@@ -16,11 +19,9 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
   },
-  image: {
+  avatar: {
     type: String,
-    match: /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\.(?:jpe?g|png|gif)$/i,
   }
 }, {
   timestamps: true,

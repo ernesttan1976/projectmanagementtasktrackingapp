@@ -5,8 +5,8 @@
 <textarea name="title" id="form-title" rows="12" cols="70" required
 title="Task description is required"><%=card.title%></textarea>
 <label for="">Card Due Date</label>
-<%='duedate:'+Date.parse(card.dueDate)%>
-<input type="date" name="dueDate" id="form-dueDate" value="<%=(card.dueDate)?Date.parse(card.dueDate):(new Date())%>" title="Date must be in the
+<!-- value='YYYY-MM-DD' -->
+<input type="date" name="dueDate" id="form-dueDate" value="<%=(card.dueDate)?card.dueDate.toISOString().split('T')[0]:new Date().toISOString().split('T')[0]%>" title="Date must be in the
 future">
 <button type="submit">Ok</button>
 </form>

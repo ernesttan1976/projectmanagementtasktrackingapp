@@ -13,11 +13,14 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "~4.16.1",
+    "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
     "moment": "^2.29.4",
     "mongoose": "^6.6.5",
     "morgan": "~1.9.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
     "webcomponent-markdown": "^0.2.7"
   },
   "devDependencies": {

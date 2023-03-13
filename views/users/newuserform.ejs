@@ -5,6 +5,6 @@
   <label for="">Email</label>
   <input type="email" name="email" id="form-email" required title="Email must be valid" match:/^[^\s@]+@[^\s@]+\.[^\s@]+$/ />
   <label for="">Password</label>
-  <input type="text" name="password" id="form-password" required title="Password must be at least 8 characters" />
+  <input type="text" name="password" id="form-password" required title="Password must be at least 8 characters" match:/[a-zA-Z0-9\?\@\!\*]{8,}/ />
   <button type="submit">Ok</button>
 </form>

@@ -30,7 +30,7 @@ function editList(req, res, next){
     .then(board => {
       const list = board.lists.id(listId);
       const title = board.title;
-      const context = { title, boardId, listId, list, board};
+      const context = { title, boardId, listId, list, board, user: res.locals.user};
       res.render('boards/editlist', context);
     })
     .catch(err => {
@@ -81,7 +81,6 @@ function createLabel(req, res) {
       const card = list.cards.id(cardId);
           card.labels.push({title: labelTitle});
           board.save();
-          console.log(board);
           res.redirect(`/boards/${boardId}/lists/${listId}/cards/${cardId}/edit`);
         })
 }
@@ -94,7 +93,7 @@ function newCard(req, res) {
     .populate('lists.cards')
     .then(board => {
       const title = board.title;
-      const context = { title, boardId, listId, board };
+      const context = { title, boardId, listId, board, user: res.locals.user};
       res.render('boards/newcard', context);
     })
     .catch(err => {
@@ -126,7 +125,6 @@ function createCard(req, res) {
       const list = board.lists.id(listId);
           list.cards.push({title: cardTitle});
           board.save();
-          console.log(board);
           res.redirect(`/boards/${boardId}`);
         })
 }
@@ -162,7 +160,7 @@ function editCard(req,res){
     .then(board => {
       const card = board.lists.id(listId).cards.id(cardId);
       const title = board.title;
-      const context = { title, boardId, listId, cardId, board, card };
+      const context = { title, boardId, listId, cardId, board, card, user: res.locals.user};
       res.render('boards/editcard', context);
     })
     .catch(err => {
@@ -207,7 +205,7 @@ function newList(req, res) {
   Board.findById(boardId).populate('lists').populate('lists.cards')
     .then(board => {
       const title = board.title;
-      const context = { title, boardId, board };
+      const context = { title, boardId, board, user: res.locals.user};
       res.render('boards/newlist', context);
     })
     .catch(err => {
@@ -238,7 +236,7 @@ function show(req, res) {
   Board.findById(boardId).populate('lists').sort({ 'lists._id': -1 }).populate('lists.cards')
     .then(board => {
       const title = board.title;
-      const context = { title, board };
+      const context = { title, board, user: res.locals.user};
       res.render('boards/show', context);
     })
 
@@ -248,7 +246,7 @@ function editBoard(req,res,next){
   const boardId = req.params.boardId;
   Board.findById(boardId)
     .then(board=>{
-      const context = {title: "Edit Board", board};
+      const context = {title: "Edit Board", board, user: res.locals.user};
       res.render('boards/editboard', context);
     })
     .catch(err=>{
@@ -270,7 +268,7 @@ function updateBoard(req,res,next){
 }
 
 function newBoard(req, res) {
-  res.render('boards/new');
+  res.render('boards/new', {user: res.locals.user});
 }
 
 
@@ -281,7 +279,7 @@ function index(req, res) {
         res.redirect('/boards/new');
       } else {
         const title = "Select Board";
-        const context = { title, boards };
+        const context = { title, boards, user: res.locals.user};
         res.render('boards/index', context);
       }
     })
