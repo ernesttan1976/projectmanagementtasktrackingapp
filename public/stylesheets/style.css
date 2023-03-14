@@ -4,6 +4,7 @@
   --large-icon-size: 30px;
   --small-icon-size-offset: 20px;
   --medium-icon-size-offset: 40px;
+  --logo-icon-size: 100px;
 }
 
 * {
@@ -14,11 +15,29 @@
   font-size: 0.8rem;
 }
 
-form {
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+}
+
+/* .login {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 34px;
+} */
+
+a {
+  display: flex;
+  text-decoration: none;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
 }
+
+
 
 .page {
   width: 150vw;
@@ -30,11 +49,21 @@ form {
   grid-template-rows: 100vh;
 }
 
+#label-for-box{
+  padding: 0 10px;
+}
+
 #label-table {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 180px;
+  margin: 0 auto;
   background-color: rgb(235, 235, 235);
   color: black;
   font-size: 0.8rem;
-  margin-left: 20px;
+  border: gray solid 2px;
 }
 
 .form-container {
@@ -48,20 +77,32 @@ form {
   height: 157vh;
 }
 
-.jumbotron {
+.board:has(#jumbotron-div){
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
+  align-items: flex-start;
+
 }
 
-.jumbotron div{
+#jumbotron-div{
   display: flex;
-  font-size: 3rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+#logo-text {
+  left: 64px;
+  top: -3px;
+  padding-top: 25px;
+  font-size: 3.5rem;
   font-weight: 600;
-  color:rgb(255, 255, 220)
+  color:rgb(255, 255, 220);
+  position: absolute;
+  display: flex;
+  width: 400px;
 }
 
 .form {
@@ -71,7 +112,7 @@ form {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: 5px;
+  padding: 10px;
   color: black;
   font-size: 0.8rem;
 }
@@ -88,6 +129,7 @@ label {
   margin-top: 10px;
   margin-bottom: 10px;
   color: inherit;
+  font-weight: 600;
 }
 
 input,select,textarea {
@@ -112,13 +154,50 @@ input:valid,textarea:valid {
   border: rgb(130, 255, 130) solid 3px;
 }
 
-button{
+button:not(:has([class^='icon'])) {
   background:#19bf00;
   border-radius: 3px;
   border: none;
   box-shadow: 3px 3px 6px -1px rgb(40, 40, 40);
-  padding: 5px;
-  /* margin-top: 20px; */
+}
+
+button:has([class^='icon']) {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form:has(.icon) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon{
+  width: var(--small-icon-size);
+  height: var(--small-icon-size);
+}
+
+.icon-medium{
+  width: var(--medium-icon-size);
+  height: var(--medium-icon-size);
+}
+
+.icon-avatar{
+  clip-path: circle(50% at 50% 50%);
+  margin-right: 10px;
+}
+
+.icon-large{
+  width: var(--large-icon-size);
+  height: var(--large-icon-size);
+}
+
+.icon-logo{
+  width: var(--logo-icon-size);
+  height: var(--logo-icon-size);
 }
 
 .board{
@@ -191,7 +270,7 @@ margin-right: 10px;
   grid-template-columns: var(--medium-icon-size-offset) 1fr var(--medium-icon-size-offset);
   grid-template-rows: var(--medium-icon-size) 1fr 30px var(--medium-icon-size-offset);
   background:rgb(255, 255, 255);
-  border-radius: 30px 10px 30px 10px;
+  border-radius: 10px 30px 0px 30px;
   box-shadow: 10px 10px 5px -5px #313131;
   margin: 10px;
   align-content: center;
@@ -223,16 +302,19 @@ margin-right: 10px;
 
 .add-card-button{
   grid-area: 3 / 1 / 4 / 4;
-  width: 90%;
   justify-self: center;
   align-self: center;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgb(228, 228, 228);
   border-radius: 3px;
 }
 
 .edit-list-button{
   grid-area: 4 / 3 / 5 / 4;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 .delete-list-button{
@@ -249,7 +331,7 @@ margin-right: 10px;
   grid-template-rows: var(--small-icon-size-offset) 1fr 1fr var(--small-icon-size-offset);
   background-color: rgb(255, 255, 220);
   box-shadow: 3px 3px 8px -1px #8C8C8C;
-  border-radius: 10px 5px 10px 5px;
+  border-radius: 10px 20px 0px 20px;
   color: black;
   font-size: 0.7rem;
   margin: 5px;
@@ -304,12 +386,13 @@ zero-md {
 .edit-card-button{
   grid-area: 4 / 4 / 5 / 6;
   justify-self: flex-end;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .delete-card-button{
-  grid-area: 4 / 1 / 5 / 2;
-  margin-left: 20px;
+  grid-area: 4 / 1 / 5 / 3;
+  justify-self: flex-start;
+  margin-left: 5px;
 }
 
 .card>.users{
@@ -343,43 +426,16 @@ zero-md {
   font-weight: 600;
 }
 
-table .labels{
+.labels{
   font-size: 0.8rem;
   padding: 5px;
+  margin: 2px;
   border-radius: min(10px, 50%);
   background-color: rgb(247, 157, 255);
   font-weight: 600;
-}
-
-
-
-:is(button):has(*){
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0;
-  background: none;
-  border-radius: none;
-  box-shadow: none;
-  padding: none;
-  margin-top: none;
-}
-
-
-
-.icon{
-  width: var(--small-icon-size);
-  height: var(--small-icon-size);
-}
-
-.icon-medium{
-  width: var(--medium-icon-size);
-  height: var(--medium-icon-size);
-}
-
-.icon-large{
-  width: var(--large-icon-size);
-  height: var(--large-icon-size);
 }
 
 *[title] {
@@ -402,13 +458,12 @@ table .labels{
   border-radius: 5px;
 }
 
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 34px;
+::-webkit-resizer {
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent rgba(255, 125, 125, 0.7) rgba(255, 125, 125,0.7) transparent;
 }
 
-.login img {
-  height: 30px;
-}
+
+
+

@@ -53,7 +53,7 @@ router.delete('/:boardId/lists/:listId/cards/:cardId', boardsCtrl.deleteCard);
 router.post('/:boardId/lists/:listId/cards/:cardId/labels', boardsCtrl.createLabel);
 
 //DELETE: DELETE /boards/:b/lists/:l/cards/:c/labels/:l
-router.delete('/:boardId/lists/:listId/cards/:cardId/labels/:labelId', boardsCtrl.deleteLabel);
+router.delete('/:boardId/lists/:listId/cards/:cardId/labels/:labelIndex', boardsCtrl.deleteLabel);
 
 //EDIT: GET /boards/:b/lists/:l/edit
 router.get('/:boardId/lists/:listId/edit', boardsCtrl.editList);

@@ -1,5 +1,5 @@
 const Board = require('../models/boards');
-const moment = require('moment');
+const dayjs = require('dayjs');
 
 module.exports = {
   index,
@@ -58,13 +58,12 @@ function deleteLabel(req, res) {
   const boardId = req.params.boardId;
   const listId = req.params.listId;
   const cardId = req.params.cardId;
-  const labelId = req.params.labelId;
+  const labelIndex = req.params.labelIndex;
   Board.findById(boardId)
     .then(board=>{
       const list = board.lists.id(listId);
       const card = list.cards.id(cardId);
-      const label = card.labels.id(labelId);
-          label.remove();
+          card.labels.splice(labelIndex,1);
           board.save();
           res.redirect(`/boards/${boardId}/lists/${listId}/cards/${cardId}/edit`);
         })
@@ -79,7 +78,7 @@ function createLabel(req, res) {
     .then(board=>{
       const list = board.lists.id(listId);
       const card = list.cards.id(cardId);
-          card.labels.push({title: labelTitle});
+          card.labels.push(labelTitle);
           board.save();
           res.redirect(`/boards/${boardId}/lists/${listId}/cards/${cardId}/edit`);
         })
@@ -138,7 +137,7 @@ function updateCard(req,res){
     .then(board => {
       const card = board.lists.id(listId).cards.id(cardId);
       card.title = title;
-      card.dueDate = moment(dueDate, 'YYYY-MM-DD HH:mm:ss').toDate();
+      card.dueDate = dayjs(dueDate, 'YYYY-MM-DD HH:mm:ss').toDate();
       board.save();
       res.redirect(`/boards/${boardId}`);
     })
@@ -155,7 +154,6 @@ function editCard(req,res){
   Board.findById(boardId)
     .populate('lists')
     .populate('lists.cards')
-    .populate('lists.cards.labels')
     .populate('lists.cards.users')
     .then(board => {
       const card = board.lists.id(listId).cards.id(cardId);
@@ -217,7 +215,6 @@ function create(req, res) {
   const newBoard = {
     title: req.body.title,
   }
-  console.log(newBoard);
   Board.create(newBoard)
     .then(board => {
       res.redirect(`/boards/${board._id}`);

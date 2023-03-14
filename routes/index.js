@@ -7,6 +7,19 @@ router.get('/', function(req, res, next) {
   //res.redirect('/boards');
 });
 
+router.get('/auth/facebook', passport.authenticate('facebook',{
+  scope: ['profile','email'],
+}));
+
+router.get('/oauth2facebook',
+  passport.authenticate('facebook', { 
+    failureRedirect: '/boards', 
+    failureMessage: '/auth/facebook' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+
 //A route to handle the request sent when the user clicks Login with Google
 router.get('/auth/google', passport.authenticate('google',{
   scope: ['profile','email'],

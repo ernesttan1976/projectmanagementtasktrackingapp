@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 // Shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
-const moment = require('moment');
+//const dayjs = require('dayjs');
 
 const userSchema = new Schema({
   name: {

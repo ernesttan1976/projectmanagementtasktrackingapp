@@ -7,8 +7,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "aws-sdk": "^2.1334.0",
     "bcrypt": "^5.1.0",
     "cookie-parser": "~1.4.4",
+    "dayjs": "^1.11.7",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
@@ -16,10 +18,11 @@
     "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
-    "moment": "^2.29.4",
     "mongoose": "^6.6.5",
     "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^2.0.0",
     "webcomponent-markdown": "^0.2.7"
   },

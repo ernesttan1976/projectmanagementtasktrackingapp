@@ -48,8 +48,8 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 [x]- DELETE: DELETE /board/:b/lists/:l/cards/:c
 
 ### MEMBERS ###
-[ ]- NEW: GET /users/new
-[ ]- CREATE: POST /users
+[x]- NEW: GET /users/new
+[x]- CREATE: POST /users
 [ ]- READ ONE: GET /users
 [ ]- UPDATE ONE: PUT /users/:u
 [ ]- DELETE: DELETE /users/:u
@@ -85,11 +85,16 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 5. Save as pdf [ ]
 
 ### Security
-1. Session Auth [ ]
-2. Google OAuth [ ]
+1. Session Auth [x]
+2. Google OAuth [x]
+3. Facebook OAuth [ ]
 
 ### UI
 1. Move and resize cards and lists and save their positions [ ]
 2. Move cards within the list (sort) [ ]
 3. Move cards between 2 lists [ ]
 
+## Soft Launch
+- [x] Change the labels to simply strings, because it is not expected to have extended functionality
+- [ ] Explain the zero-md web component
+- [x] Date conversion to be done by library as it is more robust and proven. Also need to learn to use Date library. either Day.js or Moment.js
