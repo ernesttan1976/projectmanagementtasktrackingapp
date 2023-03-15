@@ -9,18 +9,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/images/favicon/site.webmanifest">
-  <script>
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '149152461402129',
-        autoLogAppEvents: true,
-        xfbml: true,
-        version: 'v16.0'
-      });
-    };
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
   <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/reset.css" />
   <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -32,28 +20,6 @@
     <a href="/boards">
       <image src="/images/home.png" class="icon-medium"></image>
     </a>
-    <% if (!user) { %>
-      <a href="/users/signup">
-        <image src="/images/favicon/favicon.ico" class="icon-medium"></image>SIGN UP
-      </a>
-      <a href="/users/login">
-        <image src="/images/favicon/favicon.ico" class="icon-medium"></image>SIGN IN
-      </a>
-      <a href="/auth/google" class="login">
-        <image src="https://i.imgur.com/FHjYyi0.png" class="icon-medium"></image>SIGN IN GOGGLE
-      </a>
-      <a href="/auth/facebook" class="login">
-        <image src="http://i.imgur.com/JCBP0XN.png" class="icon-medium"></image>SIGN IN FB
-      </a>
-      <% } %>
-        <% if (user) { %>
-          <a href="/logout">LOG OUT</a>
-          <a href="/boards">
-            <% if (user.avatar) { %>
-              <image src='<%=user.avatar%>' class="icon-large icon-avatar" />
-              <% } %>
-                LOGGED IN AS (<%=user.name.toUpperCase()%>)
-          </a>
-          <% } %>
+   
   </nav>
   <main>

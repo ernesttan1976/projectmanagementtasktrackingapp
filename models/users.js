@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-// Shortcut to the mongoose.Schema class
+// mongoose.set('strictQuery', false);
 const Schema = mongoose.Schema;
-//const dayjs = require('dayjs');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
   name: {

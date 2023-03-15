@@ -3,6 +3,7 @@ var router = express.Router();
 var boardsCtrl = require('../controllers/boards');
 
 
+
 //READ ALL: GET /boards
 router.get('/', boardsCtrl.index);
 
@@ -23,6 +24,7 @@ router.put('/:boardId', boardsCtrl.updateBoard);
 
 //CREATE: POST /boards
 router.post('/', boardsCtrl.create);
+
 
 //NEW: GET /boards/:b/lists/new
 router.get('/:boardId/lists/new', boardsCtrl.newList);

@@ -1,17 +1,8 @@
 const mongoose = require('mongoose');
-// Shortcut to the mongoose.Schema class
+// mongoose.set('strictQuery', false);
 const Schema = mongoose.Schema;
 const User = require('./users');
 const dayjs = require('dayjs');
-
-// const labelSchema = new Schema({
-//   title: {
-//     type: String,
-//     required: true,
-//   },  
-// });
-
-
 
 const cardSchema = new Schema({
   title: {

@@ -37,6 +37,25 @@ a {
   align-items: center;
 }
 
+#logout-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logout-button {
+  display: flex;
+  text-decoration: none;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+	padding: 1px 6px;
+	outline: none;
+	box-shadow:none;
+	border-radius: none;
+}
 
 
 .page {
