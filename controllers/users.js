@@ -1,6 +1,6 @@
 const User = require('../models/users');
-var bcrypt = require('bcrypt');
 const Board = require('../models/boards');
+const passport = require('passport');
 
 module.exports = {
   newUser,
@@ -10,47 +10,16 @@ module.exports = {
 };
 
 function getLoginUser(req,res,next){
-    res.render('users/login');
+    res.render('login');
 }
 
 function loginUser(req,res,next){
-    User.findOne({email: req.body.email})
-        .then(user=>{
-            if (!user){
-                res.status(401).send('401 Unauthorised');
-            }
-            bcrypt.compare(req.body.password, user.password)
-                .then(result=>{
-                    if (!result){
-                        res.status(401).send('401 Unauthorised');
-                    } else {
-                        res.locals.user = user;
-                        req.session.isAuthenticated = true;
-
-                        Board.find()
-                            .then(boards => {
-                            if (boards.length === 0) {
-                                res.redirect('/boards/new');
-                            } else {
-                                const title = "Select Board";
-                                const context = { title, boards, user: res.locals.user};
-                                res.render('boards/index', context);
-                            }
-                            })
-                            .catch(err => {
-                            console.log(err);
-                            })
-                    }
-                })
-                .catch(err=>{
-                    console.log(err);
-                })
-        })
+    passport.authenticate('local', { successRedirect: '/boards/all', failureRedirect: '/login' });
 }
 
 
 function newUser(req,res,next){
-    res.render('users/signup');
+    res.render('signup');
 }
 
 function createUser(req,res,next){

@@ -1,48 +1,42 @@
-<div class="card" data-card-id="card01">
+<div class="card">
   <div class="card-title">
     <details>
-      <summary><%=card.title.split('#')[0].slice(0,20)+'...'%></summary>
-          <zero-md>
+      <summary>
+        <%=card.title.split('#')[0].slice(0,20)+'...'%>
+      </summary>
+      <zero-md>
         <template data-merge="append">
           <style>
-            :not(form){
+            :not(form) {
               font-size: 1rem;
             }
           </style>
         </template>
-        <!-- Write your markdown inside a `<script type="text/markdown">` tag -->
         <%-'<script type="text/markdown">'%>
-            <%=card.title%>
-          <%-'</script>' %>
-          </zero-md>
-    </details>  
+          <%=card.title%>
+            <%-'</script>'%>
+      </zero-md>
+    </details>
   </div>
-
-            <div class="due-date">
-              <%=card.dueDateShort%> 
-            </div>
-            <form action="/boards/<%=board._id%>/lists/<%=listId%>/cards/<%=card._id%>/edit" class="edit-card-button"
-              method="GET">
-              <button type="submit">
-                <image src="/images/edit.png" class="icon"></image>
-              </button>
-            </form>
-            <form action="/boards/<%=board._id%>/lists/<%=listId%>/cards/<%=card._id%>/?_method=DELETE"
-              class="delete-card-button" method="POST">
-              <button type="submit">
-                <image src="/images/trash.png" class="icon"></image>
-              </button>
-            </form>
-            <% if (card.users) { card.users.map(user=>{ %>
-              <div class="users">
-                <%=user.name%>
-              </div>
-              <% })} %>
-                <div class="labels-container">
-                  <% if (card.labels) { card.labels.map(label=>{ %>
-                    <div class="labels">
-                      <%=label%>
-                    </div>
-                    <% })} %>
-                </div>
+  <div class="due-date">
+    <%=card.dueDateShort%>
+  </div>
+  <form action="/boards/<%=board._id%>/lists/<%=listId%>/cards/<%=card._id%>/edit" class="edit-card-button"
+    method="GET">
+    <button type="submit">
+      <image src="/images/edit.png" class="icon"></image>
+    </button>
+  </form>
+  <form action="/boards/<%=board._id%>/lists/<%=listId%>/cards/<%=card._id%>/?_method=DELETE" class="delete-card-button" method="POST">
+    <button type="submit">
+      <image src="/images/trash.png" class="icon"></image>
+    </button>
+  </form>
+  <div class="labels-container">
+    <% if (card.labels) { card.labels.map(label=>{ %>
+      <div class="labels">
+        <%=label%>
+      </div>
+      <% })} %>
+  </div>
 </div>

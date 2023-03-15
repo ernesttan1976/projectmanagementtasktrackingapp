@@ -30,7 +30,7 @@ function editList(req, res, next){
     .then(board => {
       const list = board.lists.id(listId);
       const title = board.title;
-      const context = { title, boardId, listId, list, board, user: res.locals.user};
+      const context = { title, boardId, listId, list, board};
       res.render('boards/editlist', context);
     })
     .catch(err => {
@@ -92,11 +92,12 @@ function newCard(req, res) {
     .populate('lists.cards')
     .then(board => {
       const title = board.title;
-      const context = { title, boardId, listId, board, user: res.locals.user};
+      const context = { title, boardId, listId, board};
       res.render('boards/newcard', context);
     })
     .catch(err => {
       console.error(err);
+      res.send(err);
     })
 }
 
@@ -111,6 +112,10 @@ function deleteCard(req, res) {
           card.remove();
           board.save();
           res.redirect(`/boards/${boardId}`);
+        })   
+        .catch(err => {
+          console.error(err);
+          res.send(err);
         })
 }
 
@@ -125,6 +130,10 @@ function createCard(req, res) {
           list.cards.push({title: cardTitle});
           board.save();
           res.redirect(`/boards/${boardId}`);
+        })
+        .catch(err => {
+          console.error(err);
+          res.send(err);
         })
 }
 
@@ -143,6 +152,7 @@ function updateCard(req,res){
     })
     .catch(err => {
       console.error(err);
+      res.send(err);
     })
 }
 
@@ -158,11 +168,12 @@ function editCard(req,res){
     .then(board => {
       const card = board.lists.id(listId).cards.id(cardId);
       const title = board.title;
-      const context = { title, boardId, listId, cardId, board, card, user: res.locals.user};
+      const context = { title, boardId, listId, cardId, board, card};
       res.render('boards/editcard', context);
     })
     .catch(err => {
       console.error(err);
+      res.send(err);
     })
 }
 
@@ -178,6 +189,7 @@ function deleteList(req, res) {
     })
     .catch(err => {
       console.log(err);
+      res.send(err);
     })
 
 }
@@ -193,6 +205,7 @@ function createList(req, res) {
     })
     .catch(err => {
       console.log(err);
+      res.send(err);
     })
 
 }
@@ -203,11 +216,12 @@ function newList(req, res) {
   Board.findById(boardId).populate('lists').populate('lists.cards')
     .then(board => {
       const title = board.title;
-      const context = { title, boardId, board, user: res.locals.user};
+      const context = { title, boardId, board};
       res.render('boards/newlist', context);
     })
     .catch(err => {
       console.err(err);
+      res.send(err);
     })
 }
 
@@ -221,10 +235,13 @@ function create(req, res) {
     })
     .catch(err => {
       console.err(err);
+      res.send(err);
     })
 }
 
 function redirect(req, res) {
+  console.log("Redirect",req.query.boardId);
+  //res.send(`/boards/${req.query.boardId}`);
   res.redirect(`/boards/${req.query.boardId}`);
 }
 
@@ -233,8 +250,12 @@ function show(req, res) {
   Board.findById(boardId).populate('lists').sort({ 'lists._id': -1 }).populate('lists.cards')
     .then(board => {
       const title = board.title;
-      const context = { title, board, user: res.locals.user};
+      const context = { title, board};
+      console.log(context);
       res.render('boards/show', context);
+    })
+    .catch(err=>{
+      res.status('404').send('error');
     })
 
 }
@@ -243,11 +264,12 @@ function editBoard(req,res,next){
   const boardId = req.params.boardId;
   Board.findById(boardId)
     .then(board=>{
-      const context = {title: "Edit Board", board, user: res.locals.user};
+      const context = {title: "Edit Board", board};
       res.render('boards/editboard', context);
     })
     .catch(err=>{
-      res.send(next);
+      console.log(err);
+      res.send(err);
     })
 }
 
@@ -260,12 +282,13 @@ function updateBoard(req,res,next){
       res.redirect(`/boards/${boardId}`);
     })
     .catch(err=>{
-      res.send(next);
+      console.log(err);
+      res.send(err);
     })
 }
 
 function newBoard(req, res) {
-  res.render('boards/new', {user: res.locals.user});
+  res.render('boards/new');
 }
 
 
@@ -276,12 +299,13 @@ function index(req, res) {
         res.redirect('/boards/new');
       } else {
         const title = "Select Board";
-        const context = { title, boards, user: res.locals.user};
+        const context = { title, boards};
         res.render('boards/index', context);
       }
     })
     .catch(err => {
       console.log(err);
+      res.send(err);
     })
 
 }

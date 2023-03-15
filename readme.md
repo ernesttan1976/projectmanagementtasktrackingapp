@@ -73,21 +73,19 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 
 ### Data and Validation
 1. Fix the date in the card edit form [x]
-2. Validation at model level
-3. Validation at view level
-4. Validation at controller level
+2. Validation at view level - html
+3. Validation at model level - mongoose
+4. Validation at controller level - express
 
 ### Power Feature
 1. Markdown element [x]
-2. Photo upload for user[ ], use string url first
-3. File upload for board files [ ]
-4. Print page [ ] 
-5. Save as pdf [ ]
+2. S3 + Multer : File upload for board files [ ]
+3. Print page [ ] 
+4. Save as pdf [ ]
 
 ### Security
 1. Session Auth [x]
 2. Google OAuth [x]
-3. Facebook OAuth [ ]
 
 ### UI
 1. Move and resize cards and lists and save their positions [ ]
@@ -96,5 +94,37 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 
 ## Soft Launch
 - [x] Change the labels to simply strings, because it is not expected to have extended functionality
-- [ ] Explain the zero-md web component
+- [x] Explain the zero-md web component
 - [x] Date conversion to be done by library as it is more robust and proven. Also need to learn to use Date library. either Day.js or Moment.js
+
+## External Libraries and Credits
+### Zero MD web component is used for displaying markdown content inside the cards.
+https://www.npmjs.com/package/zero-md
+ Note: the first line is being styled like a header by default and it starts from h2, h3 onwards.
+
+
+
+
+
+ <!-- <% if (!user) { %>
+      <a href="/signup">
+        <image src="/images/favicon/favicon.ico" class="icon-medium"></image>SIGN UP
+      </a>
+      <a href="/login">
+        <image src="/images/favicon/favicon.ico" class="icon-medium"></image>SIGN IN
+      </a>
+      <a href="/auth/google" class="login">
+        <image src="https://i.imgur.com/FHjYyi0.png" class="icon-medium"></image>SIGN IN GOGGLE
+      </a>
+
+      <% } %>
+
+        <% if (user) { %>
+          <form action="/logout" method="POST" id="logout-form"><button id="logout-button" type="submit">LOG OUT</button></form>
+          <a href="/boards">
+            <% if (user.avatar) { %>
+              <image src='<%=user.avatar%>' class="icon-large icon-avatar" />
+              <% } %>
+                LOGGED IN AS (<%=user.name.toUpperCase()%>)
+          </a>
+          <% } %> -->
