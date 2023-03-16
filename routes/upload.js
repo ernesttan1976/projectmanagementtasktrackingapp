@@ -32,7 +32,7 @@ router.post("/single/b/:boardId/l/:listId/c/:cardId", upload.single("file"), asy
     Board.findById(boardId)
     .then(board=>{
       board.lists.id(listId).cards.id(cardId).files.push(result.key);
-      board.lists.id(listId).cards.id(cardId).title+=`\n![](http://localhost:3000/upload/images/${result.key})`;
+      board.lists.id(listId).cards.id(cardId).title+=`\n![](/upload/images/${result.key})`;
               board.save();
               console.log({
                 status: "success",

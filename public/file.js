@@ -11,7 +11,6 @@ function onSubmitHandler(e, {boardId, listId, cardId}) {
         data.append("listId", listId);
         data.append("cardId", cardId);
         console.log(data);
-        const server = "http://localhost:3000";
 
         fetch(`/upload/single`, {
             method: "POST",
