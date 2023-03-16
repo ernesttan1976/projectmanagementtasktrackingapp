@@ -24,10 +24,16 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL);
+// shortcut var to mongoose.connection object
+const db = mongoose.connection;
+db.on('connected', function() {
+  console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`);
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+});
 
 /**
  * Normalize a port into a number, string, or false.
@@ -86,5 +92,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }

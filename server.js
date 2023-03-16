@@ -51,7 +51,9 @@ var methodOverride = require('method-override');
 // in the .env file
 
 // Connect to Atlas/MongoDB AFTER the dotenv has processed the .env file
-require('./config/database');
+// require('./config/na-database');
+
+
 require('./config/passport');
 
 

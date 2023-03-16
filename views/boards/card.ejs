@@ -8,10 +8,21 @@
         <template data-merge="append">
           <style>
             :not(form) {
-              font-size: 1rem;
+              font-size: 0.8rem;
+            }
+            .markdown-body h2,h3,h4 {
+              font-size: 1rem!important;
+              margin: 2px 0!important;
+            }
+            image {
+              max-width: 100%;
+              aspect-ratio: initial;
+              resize: both;
             }
             pre,code {
               display: none;
+              padding: 0 !important;
+              margin: 0 !important;
             }
           </style>
         </template>

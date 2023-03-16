@@ -382,7 +382,7 @@ margin-right: 10px;
   height: auto;
   min-width: 200px;
   min-height: 400px;
-  max-height: 600px;
+  /* max-height: 600px; */
   display: grid;
   grid-template-columns: var(--medium-icon-size-offset) 1fr var(--medium-icon-size-offset);
   grid-template-rows: var(--medium-icon-size) 1fr 30px var(--medium-icon-size-offset);
@@ -441,7 +441,7 @@ margin-right: 10px;
 .card {
   display: grid;
   align-self: stretch;
-  min-height: 100px;
+  min-height: 80px;
   min-width: 180px;
   height: fit-content;
   grid-template-columns: var(--small-icon-size-offset) 1fr 1fr 1fr var(--small-icon-size-offset) ;
@@ -464,6 +464,7 @@ margin-right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 .card details {
@@ -476,9 +477,9 @@ margin-right: 10px;
 }
 
 zero-md {
-  width: 95%;
-  height: 90%;
-  /* max-height: 300px; */
+  /* width: 95%;
+  height: 90%; */
+  /* max-height: 80%; */
   overflow: auto;
   scrollbar-width: thin;
   font-size: 1% !important;
