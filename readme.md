@@ -15,7 +15,7 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 
 6. [x] As a team member, I want to be able to __add labels to a task card__ in Trello Kanban board so that I can easily categorize and prioritize my work.
 
-7. [/] As a product owner, I want to __add a description and attachments__ to a task card in Trello Kanban board so that the development team has all the information they need to complete the task.
+7. [x] As a product owner, I want to __add a description and attachments__ to a task card in Trello Kanban board so that the development team has all the information they need to complete the task.
 
 8. [ ] As a project manager, I want to __assign a task to a team member__ on the Trello Kanban board so that I can ensure that everyone knows what they need to work on.
 
@@ -106,25 +106,3 @@ https://www.npmjs.com/package/zero-md
 
 
 
- <!-- <% if (!user) { %>
-      <a href="/signup">
-        <image src="/images/favicon/favicon.ico" class="icon-medium"></image>SIGN UP
-      </a>
-      <a href="/login">
-        <image src="/images/favicon/favicon.ico" class="icon-medium"></image>SIGN IN
-      </a>
-      <a href="/auth/google" class="login">
-        <image src="https://i.imgur.com/FHjYyi0.png" class="icon-medium"></image>SIGN IN GOGGLE
-      </a>
-
-      <% } %>
-
-        <% if (user) { %>
-          <form action="/logout" method="POST" id="logout-form"><button id="logout-button" type="submit">LOG OUT</button></form>
-          <a href="/boards">
-            <% if (user.avatar) { %>
-              <image src='<%=user.avatar%>' class="icon-large icon-avatar" />
-              <% } %>
-                LOGGED IN AS (<%=user.name.toUpperCase()%>)
-          </a>
-          <% } %> -->

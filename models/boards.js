@@ -13,10 +13,11 @@ const cardSchema = new Schema({
     type: Date,
   },
   labels: [String],
-  users: {
+  files: [String],
+  users: [{
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'User',
-  },
+  }],
 });
 
 cardSchema.virtual('dueDateShort').get(function(){

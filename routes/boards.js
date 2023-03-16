@@ -63,4 +63,7 @@ router.get('/:boardId/lists/:listId/edit', boardsCtrl.editList);
 //UPDATE ONE: PUT /board/:b/lists/:l
 router.put('/:boardId/lists/:listId', boardsCtrl.updateList);
 
+//DELETE: DELETE /boards/:b/lists/:l/cards/:c/files/:f
+router.delete('/:boardId/lists/:listId/cards/:cardId/files/:fileIndex', boardsCtrl.deleteFile);
+
 module.exports = router;

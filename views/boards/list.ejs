@@ -1,6 +1,6 @@
-<div class="list" id="list<%=listIndex%>">
+<div class="list" draggable="true">
     <div class="list-title"><%=list.title%></div>
-    <div class="list-container">
+    <div class="list-container" id="<%=list._id%>">
       <% list.cards.forEach(card=>{ %>
         <%- include('./card', {listId: list._id, listIndex, card}) %>        
       <% }) %>

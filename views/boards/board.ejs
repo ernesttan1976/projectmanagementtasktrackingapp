@@ -1,9 +1,8 @@
 <div class="board">
     <div class="board-title">
-      <form action="/boards" method="GET" class="home-button">
-        <button><image src="/images/home.png" class="icon-large"></image></button></form><%=board.title%>
-      <form action="/boards/<%=board._id%>/edit" method="GET" class="edit-board-button">
-      <button><image src="/images/edit.png" class="icon-small"></image></button></form>
+      <%=board.title%>
+      <form action="/boards/<%=board._id%>/edit" method="GET" class="icon-medium">
+      <button class="icon-medium"><image src="/images/edit.png" class="icon-medium"></image></button></form>
 </div>
     <div class="board-container">
       <% board.lists.forEach((list, listIndex)=>{ %>

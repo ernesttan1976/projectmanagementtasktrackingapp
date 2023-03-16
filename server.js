@@ -5,61 +5,42 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-// var passport = require('passport');
-// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-// var LocalStrategy = require('passport-local');
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 const User = require('./models/users');
 
-// passport.use(new GoogleStrategy(
-//   //config
-//   {
-//     clientID: process.env.GOOGLE_CLIENT_ID,
-//     clientSecret: process.env.GOOGLE_SECRET,
-//     callbackURL: process.env.GOOGLE_CALLBACK,
-//   },
-//   async function verifyCallback(accessToken, refreshToken, profile, cb) {
-//     //user has logged in with OAuth
-//     //1.Fetch the user from the database and provide them back to Passport by calling the cb() callback function
-//     //2.If user does not exist, add user to database and pass the user object in the cb function
-//     try {
-//       let user = await User.findOne({ googleId: profile.id });
-//       if (user) return cb(null, user);
-//       user = await User.create({
-//         name: profile.displayName,
-//         googleId: profile.id,
-//         email: profile.emails[0].value,
-//         avatar: profile.photos[0].value,
-//       });
-//       return cb(null, user);
-//     } catch (err) {
-//       return cb(err);
-//     }
-//   }
-// ));
-
-// passport.use(new LocalStrategy(
-//   function (username, password, done) {
-//     console.log(username, password, done);
-//     User.findOne({ email: username })
-//       .then(user => {
-//         console.log(user);
-//         if (!user) {
-//           console.log('localStrategy: no matching user found');
-//           return done(null, false);
-//         }
-//         if (!user.verifyPassword(password)) {
-//           console.log('localStrategy: password incorrect');
-//           return done(null, false);
-//         } else {
-//           console.log('localStrategy: passed');
-//           return done(null, user);
-//         }
-//       })
-//       .catch(err => {
-//         console.log('localStrategy: error thrown', err);
-//         return done(err);
-//       })
-//   }));
+passport.use(new GoogleStrategy(
+  //config
+  {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK,
+  },
+  async function verifyCallback(accessToken, refreshToken, profile, cb) {
+    //user has logged in with OAuth
+    //1.Fetch the user from the database and provide them back to Passport by calling the cb() callback function
+    //2.If user does not exist, add user to database and pass the user object in the cb function
+    try {
+      let user = await User.findOne({ googleId: profile.id });
+      if (user) {
+        console.log('user found:',user);
+        return cb(null, user);
+      }
+      user = await User.create({
+        name: profile.displayName,
+        googleId: profile.id,
+        email: profile.emails[0].value,
+        avatar: profile.photos[0].value,
+      });
+      user.save();
+      console.log('user created:',user);
+      return cb(null, user);
+    } catch (err) {
+      return cb(err);
+    }
+  }
+));
 
 
 var methodOverride = require('method-override');
@@ -77,6 +58,8 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var boardsRouter = require('./routes/boards');
 var uploadRouter = require('./routes/upload');
+var authRouter = require('./routes/auth');
+var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -88,38 +71,38 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(session({
-//   secret: process.env.SECRET,
-//   resave: false,
-//   saveUninitialized: true,
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 //To pass req.user to res.locals, if not logged in, req.user is undefined
-// app.use(function (req, res, next) {
-//   res.locals.user = req.user;
-//   next();
-// })
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+})
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-// function UserIsLoggedIn(req, res, next){
-//   console.table([['req.user:',req.user],['res.locals.user:', res.locals.user], ['req.session.passport:', req.session.passport]]);
-//   if (res.locals.user){
-//     //req.user is set if logged in
-//     console.log('user is logged in');
-//     next();
-//   } else {
-//     console.log('user is not logged in');
-//     res.status(401).send('401 User is not logged in, unauthorised');
-//   }
-// }
+function UserIsLoggedIn(req, res, next){
+  console.table([['req.user:',req.user],['res.locals.user:', res.locals.user]]);
+  if (res.locals.user){
+    console.log('user is logged in');
+    next();
+  } else {
+    console.log('user is not logged in');
+    res.status(401).send('401 User is not logged in, unauthorised');
+  }
+}
 
 app.use('/', indexRouter);
-app.use('/boards', boardsRouter);
-app.use('/upload', uploadRouter);
-
+app.use('/', authRouter);
+app.use('/boards', UserIsLoggedIn, boardsRouter);
+app.use('/upload', UserIsLoggedIn, uploadRouter);
+app.use('/users', UserIsLoggedIn, usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

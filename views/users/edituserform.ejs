@@ -1,0 +1,17 @@
+<form class="form" action="/users/<%=userData._id%>?_method=PUT" method="POST">
+    <details open>
+        <summary class="form-title">My Profile Details</summary>
+        <label>Name</label>
+        <input type="text" name="name" value="<%=userData.name%>"
+            title="Nice to meet you! Can you tell me your name?"></input>
+        <label>Google Id</label>
+        <input type="text" name="googleId" value="<%=userData.googleId%>" disabled="true"></input>
+        <label>Email</label>
+        <input type="email" name="email" value="<%=userData.email%>" match=/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            title="Got a cool email address to share with me?"></input>
+        <label>Password</label>
+        <input type="password" name="password" value="<%=userData.password%>" disabled
+            title="Time to create a top-secret password! What's it gonna be?">
+        <button type="submit">Update</button>
+    </details>
+</form>

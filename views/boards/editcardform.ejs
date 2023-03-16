@@ -1,84 +1,65 @@
 <form class="form" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=card._id%>/?_method=PUT" method="POST">
-    <div class="form-title">Edit Card</div>
-    <label for="">Card Title (Markdown Editor)</label>
-    <textarea name="title" id="form-title" rows="6" cols="70" required
-        title="Task description is required"><%=card.title%></textarea>
-    <label for="">Card Due Date</label>
-    <!-- value='YYYY-MM-DD' -->
-    <input type="date" name="dueDate" id="form-dueDate" value="<%=card.dueDateHTMLTag%>" title="Date must be in the
+    <details open>
+        <summary class="form-title">Card Details</summary>
+        <label>Card Title (Markdown Editor)</label>
+        <textarea name="title" id="form-title" rows="6" cols="60" required
+            title="Task description is required"><%=card.title%></textarea>
+        <label for="">Card Due Date</label>
+        <!-- value='YYYY-MM-DD' -->
+        <input type="date" name="dueDate" id="form-dueDate" value="<%=card.dueDateHTMLTag%>" title="Date must be in the
 future">
-    <button type="submit">Ok</button>
+        <button type="submit">Ok</button>
+    </details>
 </form>
+<details class="form" open>
+    <summary class="form-title">Labels</summary>
+    <div id="label-table">
+        <% if (card.labels.length===0) { %>
+            <%='NO LABELS'%>
+                <% } else { %>
+                    <% card.labels.forEach((label,index)=>{%>
+                        <div class="labels">
+                            <%=label%>
+                        </div>
+                        <form
+                            action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/labels/<%=index%>/?_method=DELETE"
+                            class="delete-label-button" method="POST">
+                            <button type="submit">
+                                <image src="/images/trash.png" class="icon"></image>
+                            </button>
+                        </form>
+                        <% })} %>
+    </div>
+    <form class="form-no-padding" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/labels" method="POST"
+        class="add-label-container">
+        <input type="text" name="labelTitle" id="label-title">
+        <button type="submit" id="add-label-button">
+            <image src="/images/plus.png" class="icon-medium"></image>
+        </button>
+    </form>
+</details>
 
-<label id="label-for-box">Labels</label>
-<div id="label-table">
-    <% if (card.labels.length===0) { %>
-        <%='NO LABELS'%>
-            <% } else { %>
-                <% card.labels.forEach((label,index)=>{%>
-                    <div class="labels">
-                        <%=label%>
-                    </div>
-                    <form
-                        action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/labels/<%=index%>/?_method=DELETE"
-                        class="delete-label-button" method="POST">
-                        <button type="submit">
-                            <image src="/images/trash.png" class="icon"></image>
-                        </button>
-                    </form>
-                    <% })} %>
-</div>
-<form class="form" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/labels" method="POST"
-    class="add-label-button">
-    <label for="">New Label</label>
-    <input type="text" name="labelTitle" id="labelTitle">
-    <button type="submit">
-        <image src="/images/plus.png" class="icon-large"></image>
-    </button>
-</form>
-
-<script>
-
-    // let fileData=[];
-
-    // function fileChangeHandler (e){
-    //   const fileName = window.URL.createObjectURL(file.files[0])
-    //   fileData.push(fileName);
-    //   console.log(file, fileName);
-    //   const preview = document.getElementById('preview');
-    //   preview.URL=fileName;
-    // };
-
-    function onSubmitHandler(e){
-      e.preventDefault();
-      
-      const file = document.getElementById('file');
-      console.log(file.files[0]);
-      
-      const data = new FormData();
-      console.log(data);
-      data.append("image", file.files[0]); // image key to use in Postman
-      console.log(data);
-      const server = "http://localhost:3000";
-
-      // Send reqest to backend - Single upload
-      fetch(`/upload/single`, {
-        method: "POST",
-        body: data,
-      })
-        .then((result) => {
-          console.log("File sent successfully", result);
-        })
-        .catch((err) => {
-          console.log("Something Went Wrong", err);
-        });
-    };
-
-
-  </script>
-
-<form action="/upload/single" method="POST" onsubmit="onSubmitHandler()" enctype="multipart/form-data">
-    <input type="file" name="file" id="file">
-    <button type="submit">Upload</button>
-</form>
-<image id="preview" src="https://s3.console.aws.amazon.com/s3/object/ernest-ga-project?region=ap-southeast-1&prefix=SBS999U.jpg" width="10%" height="10%" />
+<details class="form" open>
+        <summary class="form-title">File Attachments (S3 Bucket)</summary>
+        <div id="file-container">
+            <% if (card.files.length===0) { %>
+                <%='NO FILES'%>
+                    <% } else { %>
+                        <% card.files.forEach((file,index)=>{%>
+                            <a href="/upload/images/<%=file%>" class="labels">
+                                <%="(..."+file.slice(-20)+")"%>
+                            </a>
+                            <form
+                                action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/files/<%=index%>/?_method=DELETE"
+                                class="delete-label-button" method="POST">
+                                <button type="submit">
+                                    <image src="/images/trash.png" class="icon"></image>
+                                </button>
+                            </form>
+                            <% })} %>
+        </div>
+        <form class="form-no-padding2" action="/upload/single/b/<%=boardId%>/l/<%=listId%>/c/<%=card._id%>" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <button type="submit">Upload</button>
+        </form>
+</detail>
