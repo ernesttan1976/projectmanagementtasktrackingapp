@@ -1,7 +1,8 @@
 # Project Management - Task Tracking App
 
-## Screenshot
-![Project Briefs](screencapture-localhost-3000-boards-641328120ceb6248552798d6-2023-03-16-23_54_12.png)\
+## Screenshots
+![Project Briefs](screencapture-localhost-3000-boards-641328120ceb6248552798d6-2023-03-16-23_54_12.png)
+![Cats](Screenshot 2023-03-17 112849.png)
 
 ## User stories
 Note: For simplicity sake, all roles will be considered fullly authorized. Member = User.
@@ -31,6 +32,7 @@ Note: For simplicity sake, all roles will be considered fullly authorized. Membe
 
 ## ERD Diagram
 ![ERD Diagram](mermaid-erd-diagram-task-tracker.png)
+[![](https://mermaid.ink/img/pako:eNqNkstuwjAQRX_F8jqglLyz41UJKVIlaDdtupgSEywlNrKdUhry77UTpEaEinpl3zm-M2NPjbc8IzjGRCwo5ALKlKHLetks16j-PUslKMsRg5IMxJzzvCCrbBAgJdBioB5AyiMXQxw-QYHo5CZl3Wb2NF0v0Pk8GvEaJavNM4pRqgtnCiiTKe6oNnCB5ubCNdQ3G7alqCp6fRm3t3dUUKnkVTltorsGpgRtsAWRXRvM_1VBp5oa4IMUN_Qd7ePmt7RYSSJu5uteJpnOlskfL9PDHlfJ8j7VDoihFOQ5ydCRqn2KsYVLIvS3Z3qs2i41sCd6aLBhM7KDqlDGsNEoVIpvTmyLYyUqYuHqkIEil1nE8Q4KqdUDMBzX-AvHD4E_Dm3Xix4CvQ1dd2Lhk5btsevbfuQFtuc6Tui7jYW_OdcW9jjy3CiaOMEktB0ncsLW77UNmqTND23p4qY?type=png)](https://mermaid.live/edit#pako:eNqNkstuwjAQRX_F8jqglLyz41UJKVIlaDdtupgSEywlNrKdUhry77UTpEaEinpl3zm-M2NPjbc8IzjGRCwo5ALKlKHLetks16j-PUslKMsRg5IMxJzzvCCrbBAgJdBioB5AyiMXQxw-QYHo5CZl3Wb2NF0v0Pk8GvEaJavNM4pRqgtnCiiTKe6oNnCB5ubCNdQ3G7alqCp6fRm3t3dUUKnkVTltorsGpgRtsAWRXRvM_1VBp5oa4IMUN_Qd7ePmt7RYSSJu5uteJpnOlskfL9PDHlfJ8j7VDoihFOQ5ydCRqn2KsYVLIvS3Z3qs2i41sCd6aLBhM7KDqlDGsNEoVIpvTmyLYyUqYuHqkIEil1nE8Q4KqdUDMBzX-AvHD4E_Dm3Xix4CvQ1dd2Lhk5btsevbfuQFtuc6Tui7jYW_OdcW9jjy3CiaOMEktB0ncsLW77UNmqTND23p4qY)
 
 ## RESTful Routes
 ### BOARD ###

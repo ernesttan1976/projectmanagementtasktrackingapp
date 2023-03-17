@@ -31,8 +31,8 @@ router.post("/single/b/:boardId/l/:listId/c/:cardId", upload.single("file"), asy
     const cardId = req.params.cardId;
     Board.findById(boardId)
     .then(board=>{
-      board.lists.id(listId).cards.id(cardId).files.push(result.key);
-      board.lists.id(listId).cards.id(cardId).title+=`\n![](/upload/images/${result.key})`;
+      board.lists.id(listId).cards.id(cardId).files.push(encodeURI(result.key));
+      board.lists.id(listId).cards.id(cardId).title+=`\n![](/upload/images/${encodeURI(result.key)})`;
               board.save();
               console.log({
                 status: "success",

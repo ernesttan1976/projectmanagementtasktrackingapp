@@ -37,7 +37,6 @@ function editList(req, res, next){
         title: board.title,
         boardId,
         listId,
-        list,
         board,
         user: res.locals.user,
       }
