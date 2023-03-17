@@ -2,7 +2,7 @@
 
 ## Screenshots
 ![Project Briefs](screencapture-localhost-3000-boards-641328120ceb6248552798d6-2023-03-16-23_54_12.png)
-![Cats](Screenshot 2023-03-17 112849.png)
+![Cats](Screenshot%202023-03-17%20112849.png)
 
 ## User stories
 Note: For simplicity sake, all roles will be considered fullly authorized. Member = User.
