@@ -66,4 +66,12 @@ router.put('/:boardId/lists/:listId', boardsCtrl.updateList);
 //DELETE: DELETE /boards/:b/lists/:l/cards/:c/files/:f
 router.delete('/:boardId/lists/:listId/cards/:cardId/files/:fileIndex', boardsCtrl.deleteFile);
 
+//CREATE: POST /boards/:b/lists/:l/cards/:c/users
+router.post('/:boardId/lists/:listId/cards/:cardId/users', boardsCtrl.createUserTag);
+
+//DELETE: DELETE /boards/:b/lists/:l/cards/:c/users/:userIndex
+router.delete('/:boardId/lists/:listId/cards/:cardId/users/:userIndex', boardsCtrl.deleteUserTag);
+
+
+
 module.exports = router;

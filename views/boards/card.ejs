@@ -53,4 +53,12 @@
       </div>
       <% })} %>
   </div>
+  <div class="users-container">
+    <% if (card.users) { card.users.map(user=>{ %>
+      <div class="users">
+        <%=user.name%>
+      </div>
+      <% })} %>
+  </div>
+
 </div>

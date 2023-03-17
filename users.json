@@ -1,0 +1,62 @@
+[
+    {
+    "name": "Alice",
+    "email": "alice@example.com",
+    "password": "alice",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Alice"
+},
+  {
+    "name": "Bob",
+    "email": "bob@example.com",
+    "password": "bob",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Bob"
+  },
+  {
+    "name": "Charlie",
+    "email": "charlie@example.com",
+    "password": "charlie",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Charlie"
+  },
+  {
+    "name": "David",
+    "email": "david@example.com",
+    "password": "david",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=David"
+  },
+  {
+    "name": "Emily",
+    "email": "emily@example.com",
+    "password": "emily",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Emily"
+  },
+  {
+    "name": "Frank",
+    "email": "frank@example.com",
+    "password": "frank",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Frank"
+  },
+  {
+    "name": "Gina",
+    "email": "gina@example.com",
+    "password": "gina",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Gina"
+  },
+  {
+    "name": "Henry",
+    "email": "henry@example.com",
+    "password": "henry",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Henry"
+  },
+  {
+    "name": "Isabel",
+    "email": "isabel@example.com",
+    "password": "isabel",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Isabel"
+  },
+  {
+    "name": "Jack",
+    "email": "jack@example.com",
+    "password": "jack",
+    "avatar": "https://dummyimage.com/300x300/000/fff&text=Jack"
+  }
+]

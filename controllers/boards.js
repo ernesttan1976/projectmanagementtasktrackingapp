@@ -1,4 +1,5 @@
 const Board = require('../models/boards');
+const User = require('../models/users');
 const dayjs = require('dayjs');
 
 module.exports = {
@@ -22,6 +23,8 @@ module.exports = {
   deleteLabel,
   deleteCard,
   deleteFile,
+  createUserTag,
+  deleteUserTag,
 };
 
 function editList(req, res, next){
@@ -72,6 +75,36 @@ function deleteFile(req, res) {
           card.files.splice(fileIndex,1);
           board.save();
           res.redirect(`/boards/${boardId}/lists/${listId}/cards/${cardId}/edit`);
+        })
+}
+
+function deleteUserTag(req, res) {
+  const boardId = req.params.boardId;
+  const listId = req.params.listId;
+  const cardId = req.params.cardId;
+  const userIndex = req.params.userIndex;
+  Board.findById(boardId)
+    .then(board=>{
+      const list = board.lists.id(listId);
+      const card = list.cards.id(cardId);
+          card.users.splice(userIndex,1);
+          board.save();
+          res.redirect(`/boards/${boardId}/lists/${listId}/cards/${cardId}/edit`);
+        })
+}
+
+function createUserTag(req, res) {
+  const boardId = req.params.boardId;
+  const listId = req.params.listId;
+  const cardId = req.params.cardId;
+  const userId = req.body.userId;
+  Board.findById(boardId)
+    .then(board=>{
+      const list = board.lists.id(listId);
+      const card = list.cards.id(cardId);
+          card.users.push(userId);
+          board.save();
+              res.redirect(`/boards/${boardId}/lists/${listId}/cards/${cardId}/edit`);
         })
 }
 
@@ -188,17 +221,21 @@ function editCard(req,res){
     .populate('lists.cards')
     .populate('lists.cards.users')
     .then(board => {
-      res.locals={
-        title: board.title,
-        boardId,
-        listId,
-        board,
-        cardId,
-        card: board.lists.id(listId).cards.id(cardId),
-        user: res.locals.user,
-      }
-      
-      res.render('boards/editcard', res.locals);
+      const excludedUserIds = board.lists.id(listId).cards.id(cardId).users._id;
+      User.find({ _id: { $nin: excludedUserIds }})
+      .then(userList=>{
+        res.locals={
+          title: board.title,
+          boardId,
+          listId,
+          board,
+          cardId,
+          card: board.lists.id(listId).cards.id(cardId),
+          user: res.locals.user,
+          userList,
+        }
+        res.render('boards/editcard', res.locals);  
+      })
     })
     .catch(err => {
       console.log(err);
@@ -275,7 +312,11 @@ function redirect(req, res) {
 
 function show(req, res) {
   const boardId = req.params.boardId;
-  Board.findById(boardId).populate('lists').sort({ 'lists._id': -1 }).populate('lists.cards')
+  Board.findById(boardId)
+  .populate('lists')
+  .sort({ 'lists._id': -1 })
+  .populate('lists.cards')
+  .populate('lists.cards.users')
     .then(board => {
       res.locals={
         title: board.title,

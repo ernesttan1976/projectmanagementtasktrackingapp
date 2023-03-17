@@ -76,7 +76,7 @@ a {
 
 
 .page {
-  width: 150vw;
+  width: 100vw;
   height: 150vh;
   display: grid;
   justify-content: stretch;
@@ -144,6 +144,7 @@ a {
 
 .form-container {
   width: 100%;
+  resize: both;
   grid-area: 1 / 1 / 2 / 2;
   background-color: rgb(235, 235, 235);
   display: flex;
@@ -216,10 +217,11 @@ a {
 .form-title{
   align-self: flex-start;
   margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: inherit;
   padding: 6px;
+  overflow: both;
 }
 
 ::marker{
@@ -327,6 +329,7 @@ form:has(.icon) {
   padding: 10px 0 20px 0;
   width: auto;
   height: auto;
+  resize: both;
 }
 
 .board>.board-title{
@@ -363,10 +366,9 @@ margin-right: 10px;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   background-color: rgb(119, 0, 230);
   overflow: auto;
-  resize: vertical;
   width: auto;
   height: 150vh;
 }
@@ -408,7 +410,8 @@ margin-right: 10px;
 .list>.list-container {
   grid-area: 2 / 1 / 3 / 4;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
@@ -512,19 +515,6 @@ zero-md {
   margin-left: 5px;
 }
 
-.card>.users{
-  grid-area: 1 / 1 / 2 / 6;
-  justify-self: flex-start;
-  align-self: center;
-  font-size: 0.6rem;
-  margin-left: 10px;
-  margin-right: 5px;
-  padding: 2px 5px;
-  border-radius: min(10px, 50%);
-  background-color: rgb(47, 234, 0);
-  font-weight: 600;
-}
-
 .card .labels-container{
   grid-area: 1 / 1 / 2 / 6;
   justify-self: flex-end;
@@ -554,6 +544,26 @@ zero-md {
   justify-content: center;
   align-items: center;
 }
+
+.card .users-container{
+  grid-area: 1 / 1 / 2 / 6;
+  justify-self: flex-start;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.card .users{
+  font-size: 0.6rem;
+  margin-right: 5px;
+  margin-left: 10px;
+  padding: 2px 5px;
+  border-radius: min(10px, 50%);
+  background-color: rgb(77, 80, 254);
+  font-weight: 600;
+  color: whitesmoke;
+}
+
 
 *[title] {
   /* Set the title attribute to an empty string */

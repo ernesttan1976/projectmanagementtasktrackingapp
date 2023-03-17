@@ -1,8 +1,9 @@
+<div class="form-title"><%=card.title.split("\n")[0]%></div>
 <form class="form" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=card._id%>/?_method=PUT" method="POST">
-    <details open>
+    <details>
         <summary class="form-title">Card Details</summary>
         <label>Card Title (Markdown Editor)</label>
-        <textarea name="title" id="form-title" rows="6" cols="60" required
+        <textarea name="title" id="form-title" rows="10" cols="60" required
             title="Task description is required"><%=card.title%></textarea>
         <label for="">Card Due Date</label>
         <!-- value='YYYY-MM-DD' -->
@@ -11,7 +12,38 @@ future">
         <button type="submit">Ok</button>
     </details>
 </form>
-<details class="form" open>
+<details class="form">
+    <summary class="form-title">Team Members</summary>
+    <div id="label-table">
+        <% if (card.users.length===0) { %>
+            <%='NO TEAM MEMBERS TAGGED'%>
+                <% } else { %>
+                    <% card.users.forEach((member,index)=>{%>
+                        <div class="labels">
+                            <%=member.name.slice(0,8)%>
+                        </div>
+                        <form
+                            action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/users/<%=index%>/?_method=DELETE"
+                            class="delete-label-button" method="POST">
+                            <button type="submit">
+                                <image src="/images/trash.png" class="icon"></image>
+                            </button>
+                        </form>
+                        <% })} %>
+    </div>
+    <form class="form" id="select-board" action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/users" method="POST">
+        <label>Tag Team Member to Card</label>
+        <select name="userId" title="Select team member">
+        <% userList.forEach((member,index)=>{ %>
+          <option value="<%=member._id%>" <%=(index===0) ? 'selected':''%>>
+            <%=member.name%>
+          </option>
+        <% }) %>
+        </select>
+        <button type="submit">Tag</button>
+    </form>
+</details>
+<details class="form">
     <summary class="form-title">Labels</summary>
     <div id="label-table">
         <% if (card.labels.length===0) { %>
@@ -38,8 +70,7 @@ future">
         </button>
     </form>
 </details>
-
-<details class="form" open>
+<details class="form">
         <summary class="form-title">File Attachments (S3 Bucket)</summary>
         <div id="file-container">
             <% if (card.files.length===0) { %>
