@@ -78,7 +78,7 @@ future">
                     <% } else { %>
                         <% card.files.forEach((file,index)=>{%>
                             <a href="/upload/images/<%=file%>" class="labels">
-                                <%="(..."+file.slice(-20)+")"%>
+                                <%="(S3Bucket..."+file.slice(-20)+")"%>
                             </a>
                             <form
                                 action="/boards/<%=boardId%>/lists/<%=listId%>/cards/<%=cardId%>/files/<%=index%>/?_method=DELETE"
