@@ -1,4 +1,5 @@
 # Project Management - Task Tracking App
+[VIEW DEPLOYED APP HERE >> https://electric-blue-springbok-fez.cyclic.app/](https://electric-blue-springbok-fez.cyclic.app/)
 
 ## Screenshots
 ![Project Briefs](screencapture-localhost-3000-boards-641328120ceb6248552798d6-2023-03-16-23_54_12.png)
